@@ -206,7 +206,7 @@ function Create() {
                                     </div>
                                     <div className="form-content">
                                         <div className="form-title">
-                                            <h1>Cập nhật thông tin cá nhân</h1>
+                                            <h1>Thêm truyện</h1>
                                         </div>
                                         <div className="">
                                             <form onSubmit={handleSubmit}

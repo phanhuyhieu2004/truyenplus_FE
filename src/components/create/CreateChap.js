@@ -139,7 +139,7 @@ function CreateChap() {
                                     </div>
                                     <div className="form-content">
                                         <div className="form-title">
-                                            <h1>Cập nhật thông tin cá nhân</h1>
+                                            <h1>Thêm chương</h1>
                                         </div>
 
                                         <Link to={`/chapters/${storyId}`}><button className="btn-add">
