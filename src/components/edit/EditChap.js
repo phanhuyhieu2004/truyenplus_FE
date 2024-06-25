@@ -165,7 +165,7 @@ function EditChap() {
                                                 <div className="form-profile">
                                                     <div className="edit-row">
                                                         <div className="col-1">Số chương</div>
-                                                        <div className="col-2" style={{width: 'calc(100% - 30px)'}}>
+                                                        <div className="col-2" >
                                                             <input
                                                                 className="input form-control"
                                                                 type="text"

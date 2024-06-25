@@ -216,7 +216,7 @@ function Create() {
 
                                                 <div className="form-profile">
                                                     <div className="edit-row">
-                                                        <div className="col-1">Chọn ảnh (*)</div>
+                                                        <div className="col-1">Chọn ảnh <span>(*)</span></div>
                                                         <div className="col-2 row-avatar">
 
 
@@ -262,7 +262,7 @@ function Create() {
                                                         <div className="col-3"/>
                                                     </div>
                                                     <div className="edit-row edit-row-email">
-                                                        <div className="col-1 col-md-4">Tiêu đề (*)</div>
+                                                        <div className="col-1 col-md-4">Tiêu đề <span>(*)</span></div>
 
                                                         <div className="col-2">
                                                             <input
@@ -273,12 +273,11 @@ function Create() {
                                                                 onChange={(e) => setTitle(e.target.value)}
                                                                 required
                                                             />
-                                                            <i className="fa fa-check-circle-o"/>
-                                                        </div>
+                                                            <p class="register-notify" style={{marginBottom: '0!important'}}>Lưu ý: Tiêu đề phải tối thiểu từ 5 đến tối đa là  50 ký tự .</p>                                                        </div>
                                                         <div className="col-3"/>
                                                     </div>
                                                     <div className="edit-row">
-                                                        <div className="col-1">Tác giả (*)</div>
+                                                        <div className="col-1">Tác giả <span>(*)</span></div>
                                                         <div className="col-2">
                                                             <input
                                                                 className="input form-control"
@@ -295,16 +294,20 @@ function Create() {
 
 
                                                     <div className="edit-row">
-                                                        <div className="col-1">Mô tả (*)</div>
-                                                        <div className="col-2"style={{width: 'calc(100% - 30px)'}}>
-                                                            <ReactQuill value={description} onChange={handleChangeDescription}
+                                                        <div className="col-1">Mô tả <span>(*)</span></div>
+                                                        <div className="col-2" style={{width: 'calc(100% - 30px)'}}>
+                                                            <ReactQuill value={description}
+                                                                        onChange={handleChangeDescription}
                                                                         modules={modules} formats={formats}/>
+                                                            <p class="register-notify"
+                                                               style={{marginBottom: '0!important'}}>Lưu ý :Mô tả phải tối thiểu  từ 30 đến tối đa là 4000 ký tự .</p>
 
-                                                        </div>
-                                                        <div className="col-3" />
+
                                                     </div>
-                                                    <div className="edit-row">
-                                                        <div className="col-1">Danh mục (*) </div>
+                                                    <div className="col-3"/>
+                                                </div>
+                                                <div className="edit-row">
+                                                <div className="col-1">Danh mục <span >(*)</span> </div>
                                                         <div className="col-2" style={{width: 'calc(100% - 30px)'}}>
                                                             <div className="form-category">
 

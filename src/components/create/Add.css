@@ -300,6 +300,9 @@ textarea::placeholder {
     padding-top: 18px;
     width: 140px;
 }
+.form-profile .edit-row .col-1 span{
+    color: red;
+}
 
 .form-profile .edit-row .col-2 {
     font-size: 15px;
@@ -378,7 +381,7 @@ textarea::placeholder {
     padding: 6px 0;
 }
 
-.form-profile textarea, .form-profile input[type="text"] {
+.form-profile textarea, .form-profile input[type="text"], .form-profile input[type="number"] {
     padding: 10px;
     font-size: 15px;
     border-radius: 3px;

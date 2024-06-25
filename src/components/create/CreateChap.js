@@ -158,8 +158,8 @@ function CreateChap() {
                                                         <div className="col-2" style={{width: 'calc(100% - 30px)'}}>
                                                             <input
                                                                 className="input form-control"
-                                                                type="text"
-                                                                placeholder="Nhập tiêu đề"
+                                                                type="number"
+                                                                placeholder="Nhập số chương"
                                                                 value={chapterNumber}
                                                                 onChange={(e) => setChapterNumber(e.target.value)}
                                                                 required
