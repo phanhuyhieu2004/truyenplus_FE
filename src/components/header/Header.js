@@ -268,9 +268,9 @@ function Header() {
                                         </a>
                                     </li>
                                     <li className="menu-item-has-children">
-                                        <a href="/home" className="dropdown">
+                                        <span  className="dropdown">
                                             TÀI KHOẢN <i className="fa fa-angle-down"/>
-                                        </a>
+                                        </span>
                                         <ul className="menu-subs menu-column-1">
                                             <li className="menu-item">
                                                 <a href="/home">Đăng ký</a>

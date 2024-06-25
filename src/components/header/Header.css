@@ -349,6 +349,21 @@ span.item-name a:first-child:before {
     -o-transition: color 0.3s ease-in-out;
     transition: color 0.3s ease-in-out;
 }
+.header .menu > ul > li > span {
+    position: relative;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.25;
+    border: none;
+    outline: none;
+    color: #232323;
+    text-transform: capitalize;
+    text-rendering: optimizeLegibility;
+    -webkit-transition: color 0.3s ease-in-out;
+    -o-transition: color 0.3s ease-in-out;
+    transition: color 0.3s ease-in-out;
+}
 
 .header .menu > ul > li .menu-subs {
     position: absolute;
@@ -658,8 +673,29 @@ span.item-name a:first-child:before {
         padding: 0 3.125rem 0 1rem;
         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     }
+    .header .menu > ul > li > span {
+        display: block;
+        line-height: 3.125rem;
+        height: 3.125rem;
+        padding: 0 3.125rem 0 1rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
 
     .header .menu > ul > li > a i.fa {
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        position: absolute;
+        font-size: 1.5rem;
+        line-height: 3.125rem;
+        top: 0;
+        right: 0;
+        width: 3.125rem;
+        height: 3.125rem;
+        text-align: center;
+        -webkit-transform: rotate(-90deg);
+        -ms-transform: rotate(-90deg);
+        transform: rotate(-90deg);
+    }
+    .header .menu > ul > li > span i.fa {
         border-top: 1px solid rgba(0, 0, 0, 0.1);
         position: absolute;
         font-size: 1.5rem;
