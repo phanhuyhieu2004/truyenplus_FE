@@ -189,8 +189,8 @@ function EditChap() {
                                                                 onChange={(e) => setTitle(e.target.value)}
                                                                 required
                                                             />
-                                                            <i className="fa fa-check-circle-o"/>
-                                                        </div>
+                                                            <p class="register-notify"
+                                                               style={{marginBottom: '0!important'}}>Lưu ý: Tiêu đề phải tối thiểu từ 5 đến tối đa là  50 ký tự.</p>                                                     </div>
                                                         <div className="col-3"/>
                                                     </div>
 
@@ -205,7 +205,9 @@ function EditChap() {
                                                                 formats={formats}
 
                                                             />
-                                                        </div>
+                                                            <p style={{marginBottom: '0!important'}}>Lưu ý: Nội dung phải tối thiểu từ 30 đến tối đa là  7000 ký tự.</p>
+
+                                                    </div>
                                                         <div className="col-3"/>
                                                     </div>
 

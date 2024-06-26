@@ -1,4 +1,4 @@
-import "./Add.css";
+import "./Create.css";
 import React, {useState} from "react";
 import axios from "axios";
 
@@ -154,7 +154,7 @@ function CreateChap() {
 
                                                 <div className="form-profile">
                                                     <div className="edit-row">
-                                                        <div className="col-1">Số chương</div>
+                                                        <div className="col-1">Số chương <span>(*)</span></div>
                                                         <div className="col-2" style={{width: 'calc(100% - 30px)'}}>
                                                             <input
                                                                 className="input form-control"
@@ -165,11 +165,14 @@ function CreateChap() {
                                                                 required
 
                                                             />
-                                                        </div>
-                                                        <div className="col-3"/>
+                                                            <p class="register-notify"
+                                                               style={{marginBottom: '0!important'}}>Lưu ý: Số chương phải nhập số,không được trùng lặp số chương trong cùng 1 truyện.</p>
+
                                                     </div>
-                                                    <div className="edit-row edit-row-email">
-                                                        <div className="col-1 col-md-4">Tiêu đề (*)</div>
+                                                    <div className="col-3"/>
+                                                </div>
+                                                <div className="edit-row edit-row-email">
+                                                <div className="col-1 col-md-4">Tiêu đề <span>(*)</span></div>
 
                                                         <div className="col-2">
                                                             <input
@@ -180,14 +183,14 @@ function CreateChap() {
                                                                 onChange={(e) => setTitle(e.target.value)}
                                                                 required
                                                             />
-                                                            <i className="fa fa-check-circle-o"/>
-                                                        </div>
+                                                            <p class="register-notify"
+                                                               style={{marginBottom: '0!important'}}>Lưu ý: Tiêu đề phải tối thiểu từ 5 đến tối đa là  50 ký tự.</p>                                                        </div>
                                                         <div className="col-3"/>
                                                     </div>
 
 
                                                     <div className="edit-row">
-                                                        <div className="col-1">Nội dung (*)</div>
+                                                        <div className="col-1">Nội dung <span>(*)</span></div>
                                                         <div className="col-2" style={{width: 'calc(100% - 30px)'}}>
                                                             <ReactQuill
                                                                 value={content}
@@ -196,6 +199,8 @@ function CreateChap() {
                                                                 formats={formats}
 
                                                             />
+                                                            <p className="register-notify"
+                                                               style={{marginBottom: '0!important'}}>Lưu ý: Nội dung phải tối thiểu từ 30 đến tối đa là  7000 ký tự.</p>
                                                         </div>
                                                         <div className="col-3"/>
                                                     </div>
