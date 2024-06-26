@@ -58,7 +58,7 @@ function Chap() {
     }, [storyId]);
 
     if (!chapter) {
-        return (<p>Loading...</p>);
+        return (<p>Đang tải dữ liệu</p>)
     }
 
     const currentChapterIndex = chapters.findIndex(chap => chap.chapterId === parseInt(chapterId, 10));

@@ -156,7 +156,6 @@ function ListChap() {
                                         ): (<p>Không có chương nào</p>)
                                         }
 
-                                        <div className="pagination-container" >
                                             <div className="pagination">
                                                 <Pagination
                                                     count={Math.ceil(chapters.length / chaptersPerPage)}
@@ -164,7 +163,8 @@ function ListChap() {
                                                     onChange={handlePageChange}
                                                 />
                                             </div>
-                                        </div>
+
+
 
                                     </div>
 

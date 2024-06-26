@@ -39,7 +39,7 @@ function Story() {
         fetchChapters();
     }, [storyId]);
     if (!story) {
-        return (<p>Load</p>)
+        return (<p>Đang tải dữ liệu</p>)
     }
     const updatedAtArray = story.updatedAt;
 

@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bfdcb5d5-bc87-425e-8cb2-aaa71f6066c3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/list/ListChap.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/list/ListChap.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -119,7 +120,7 @@
       <workItem from="1719146240117" duration="8002000" />
       <workItem from="1719181093867" duration="24385000" />
       <workItem from="1719364239016" duration="1890000" />
-      <workItem from="1719383292211" duration="413000" />
+      <workItem from="1719383292211" duration="1275000" />
     </task>
     <servers />
   </component>
@@ -134,6 +135,12 @@
           <line>106</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/list/ListChap.js</url>
+          <line>158</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
