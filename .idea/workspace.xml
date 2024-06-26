@@ -5,19 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bfdcb5d5-bc87-425e-8cb2-aaa71f6066c3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/logo192.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/logo512.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/create/Add.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create/Create.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/create/Create.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create/Create.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/create/CreateChap.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create/CreateChap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/edit/Edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/edit/Edit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/edit/EditChap.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/edit/EditChap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logo.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reportWebVitals.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/setupTests.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/list/ListChap.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/list/ListChap.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,10 +119,23 @@
       <workItem from="1719146240117" duration="8002000" />
       <workItem from="1719181093867" duration="24385000" />
       <workItem from="1719364239016" duration="1890000" />
+      <workItem from="1719383292211" duration="413000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/list/ListChap.js</url>
+          <line>106</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

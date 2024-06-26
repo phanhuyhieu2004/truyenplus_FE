@@ -102,6 +102,7 @@ function ListChap() {
                                         <Link to={`/create/${storyId}`}><button className="btn-add">
                                             Thêm chương
                                         </button></Link>
+                                        {currentChaps.length >0 ?(
                                         <div className="table-responsive">
                                             <table className="responsive-table">
                                                 <thead>
@@ -152,6 +153,9 @@ function ListChap() {
                                                 </tbody>
                                             </table>
                                         </div>
+                                        ): (<p>Không có chương nào</p>)
+                                        }
+
                                         <div className="pagination-container" >
                                             <div className="pagination">
                                                 <Pagination
@@ -161,6 +165,7 @@ function ListChap() {
                                                 />
                                             </div>
                                         </div>
+
                                     </div>
 
 
