@@ -7,7 +7,7 @@ function ListChap() {
     const {storyId} = useParams();
     const [chapters, setChapters] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [chaptersPerPage] = useState(3);
+    const [chaptersPerPage] = useState(10);
     const [open, setOpen] = useState(false);
 
     const handleClose = () => setOpen(false);
@@ -60,7 +60,7 @@ function ListChap() {
                                         <div className="clearfix">
                                             <img
                                                 src="https://static-00.iconduck.com/assets.00/cs-cat-admin-icon-512x512-3l4exe6y.png"
-                                                className="avatar"
+                                                className="avatar" alt="lỗi"
                                             />
                                             <div className="info-text">
                                                 <div className="fullname">

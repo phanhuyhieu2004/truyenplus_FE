@@ -170,9 +170,8 @@ function Create() {
                                     <div className="form-bar">
                                         <div className="clearfix">
                                             <img
-                                                src="https://static-00.iconduck.com/assets.00/cs-cat-admin-icon-512x512-3l4exe6y.png" alt='Không có ảnh'
-                                                className="avatar"
-                                            />
+                                                src="https://static-00.iconduck.com/assets.00/cs-cat-admin-icon-512x512-3l4exe6y.png"
+                                                className="avatar" alt="không thể xem anh"                                            />
                                             <div className="info-text">
                                                 <div className="fullname">
                                                     <span>ADMIN</span>

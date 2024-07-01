@@ -1,6 +1,6 @@
 import "./Chap.css"
-import {useEffect, useState} from "react";
-import {Dialog} from "@mui/material";
+import React, {useEffect, useState} from "react";
+import {CircularProgress, Dialog} from "@mui/material";
 import {Close} from "@mui/icons-material";
 import {Link, useNavigate, useParams} from "react-router-dom";
 import axios from "axios";
@@ -58,7 +58,16 @@ function Chap() {
     }, [storyId]);
 
     if (!chapter) {
-        return (<p>Đang tải dữ liệu</p>)
+        return (
+            <>
+                <main>
+                    <div className='loading-container' style={{margin: '150px 100px', textAlign: 'center'}}>
+                        <CircularProgress color="error" size={100}/>
+                    </div>
+
+                </main>
+            </>
+        )
     }
 
     const currentChapterIndex = chapters.findIndex(chap => chap.chapterId === parseInt(chapterId, 10));

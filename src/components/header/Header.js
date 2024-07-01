@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./Header.css";
 import axios from "axios";
+import {Link} from "react-router-dom";
 
 
 function Header() {
@@ -251,8 +252,7 @@ function Header() {
                                         <ul className="menu-subs menu-mega menu-column-3">
                                             {categories.map((category) => (
                                                 <li className="menu-item">
-                                                    <a href="/home">{category.categoryName}</a>
-                                                </li>
+                                                    <Link to={`/category/${category.categoryId}`}>{category.categoryName}</Link>                                                </li>
                                             ))}
                                         </ul>
                                     </li>
@@ -272,12 +272,7 @@ function Header() {
                                             TÀI KHOẢN <i className="fa fa-angle-down"/>
                                         </span>
                                         <ul className="menu-subs menu-column-1">
-                                            <li className="menu-item">
-                                                <a href="/home">Đăng ký</a>
-                                            </li>
-                                            <li className="menu-item">
-                                                <a href="/home">Đăng nhập</a>
-                                            </li>
+
                                             <li className="menu-item">
                                                 <a href="/list">Danh sách truyện</a>
                                             </li><li className="menu-item">

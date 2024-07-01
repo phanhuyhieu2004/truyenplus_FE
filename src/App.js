@@ -1,6 +1,5 @@
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import './App.css';
-
 import Header from "./components/header/Header";
 import Home from "./components/home/Home";
 import Footer from "./components/footer/Footer";
@@ -14,8 +13,11 @@ import Edit from "./components/edit/Edit";
 import EditChap from "./components/edit/EditChap";
 
 function App() {
+
   return (
-    <div className="App">
+    <div className="App"
+    >
+
       <Router>
         <Routes>
 

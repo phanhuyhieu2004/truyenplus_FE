@@ -1,12 +1,12 @@
 
 import {Link} from "react-router-dom";
-import {Alert, Modal, Pagination, Stack, Tooltip} from "@mui/material";
-import {useEffect, useState} from "react";
+import {Alert, CircularProgress, Modal, Pagination, Stack, Tooltip} from "@mui/material";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
 function List() {
     const [stories, setStories] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [storiesPerPage] = useState(3);
+    const [storiesPerPage] = useState(10);
     const [open, setOpen] = useState(false);
 
     const handleClose = () => setOpen(false);
@@ -37,6 +37,18 @@ function List() {
                 });
         }
     };
+    if(!stories){
+        return (
+            <>
+                <main>
+                    <div className='loading-container' style={{margin: '150px 100px',textAlign:'center'}}>
+                        <CircularProgress color="error" size={100} />
+                    </div>
+
+                </main>
+            </>
+        )
+    }
 
     const indexOfLastStory = currentPage * storiesPerPage;
     const indexOfFirstStory = indexOfLastStory - storiesPerPage;
@@ -58,7 +70,7 @@ function List() {
                                         <div className="clearfix">
                                             <img
                                                 src="https://static-00.iconduck.com/assets.00/cs-cat-admin-icon-512x512-3l4exe6y.png"
-                                                className="avatar"
+                                                className="avatar" alt="admin"
                                             />
                                             <div className="info-text">
                                                 <div className="fullname">
