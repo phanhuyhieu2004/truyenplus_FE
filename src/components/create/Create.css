@@ -342,6 +342,7 @@ textarea::placeholder {
     flex-grow: 0;
     bottom: 0;
     position: relative;
+    margin-right: 30px;
 }
 .pagination {
     display: flex;

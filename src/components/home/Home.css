@@ -428,10 +428,9 @@ main {
 }
 
 .leftCol {
-    margin-right: 50px;
-    float: left;
+    margin-right: 90px;    float: left;
     width: 716px;
-    margin-right: 14px;
+
     overflow: hidden;
     margin-bottom: 20px !important;
     margin-left: 50px;

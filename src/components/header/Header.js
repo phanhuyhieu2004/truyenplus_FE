@@ -96,7 +96,7 @@ function Header() {
                             <div className="top-logo">
                                 <a href="/home" title="Truyện Plus - Đọc truyện online nhanh nhất">
                                     <img
-                                        src="/public/Remove-bg.ai_1720107171402.png"
+                                        src="https://github.com/phanhuyhieu2004/truyenplus_FE/blob/master/public/Remove-bg.ai_1720107171402.png"
                                         alt="Đọc truyện Online, Truyenplus.vn"
                                         title="Đọc truyện Online, Truyenplus.vn"
                                     />
