@@ -272,7 +272,9 @@ function Create() {
                                                                 onChange={(e) => setTitle(e.target.value)}
                                                                 required
                                                             />
-                                                            <p class="register-notify" style={{marginBottom: '0!important'}}>Lưu ý: Tiêu đề phải tối thiểu từ 5 đến tối đa là  50 ký tự .</p>                                                        </div>
+                                                            <p class="register-notify"
+                                                               style={{marginBottom: '0!important'}}>Lưu ý: Tiêu đề phải
+                                                                tối thiểu từ 5 đến tối đa là 50 ký tự .</p></div>
                                                         <div className="col-3"/>
                                                     </div>
                                                     <div className="edit-row">
@@ -288,25 +290,27 @@ function Create() {
                                                             />
 
                                                         </div>
-                                                        <div className="col-3" />
+                                                        <div className="col-3"/>
                                                     </div>
 
 
                                                     <div className="edit-row">
                                                         <div className="col-1">Mô tả <span>(*)</span></div>
-                                                        <div className="col-2" style={{width: 'calc(100% - 30px)'}}>
+                                                        <div className="col-2">
                                                             <ReactQuill value={description}
                                                                         onChange={handleChangeDescription}
+
                                                                         modules={modules} formats={formats}/>
-                                                            <p class="register-notify"
-                                                               style={{marginBottom: '0!important'}}>Lưu ý :Mô tả phải tối thiểu  từ 30 đến tối đa là 4000 ký tự .</p>
 
 
+                                                        </div>
+
+                                                        <div className="col-3"/>
                                                     </div>
-                                                    <div className="col-3"/>
-                                                </div>
-                                                <div className="edit-row">
-                                                <div className="col-1">Danh mục <span >(*)</span> </div>
+
+
+                                                    <div className="edit-row">
+                                                        <div className="col-1">Danh mục <span>(*)</span></div>
                                                         <div className="col-2" style={{width: 'calc(100% - 30px)'}}>
                                                             <div className="form-category">
 
@@ -338,7 +342,7 @@ function Create() {
                                                         <div className="col-2">
                                                             <div className="action">
                                                                 <button className="btn-form">
-                                                                   Thêm truyện
+                                                                    Thêm truyện
                                                                 </button>
                                                             </div>
                                                         </div>

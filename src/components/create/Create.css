@@ -336,7 +336,7 @@ textarea::placeholder {
 
 .form-profile .edit-row input,
 .form-profile .edit-row textarea {
-    width: calc(100% - 30px);
+    width: calc(100% - 0px);
 }
 .form-content .pagination-container{
     flex-grow: 0;
