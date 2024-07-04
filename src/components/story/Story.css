@@ -1,0 +1,358 @@
+.new-chap {
+    color: #3e3e3e;
+    width: 96%;
+    padding: 10px 2%;
+    background: #FFF;
+    text-align: justify;
+    margin-bottom: 10px;
+    float: left;
+    font-size: 14px;
+    margin-top: 10px;
+}
+.new-chap h2 {color: #333;font: 700 12px Tahoma;padding-bottom:5px; }
+.new-chap a {display: block;  padding: 2px 1px 3px; color: red;}
+
+.new-chap .btn-notify { background-color: #f8e378; font-size: 12px; padding: 1px 5px; border-radius: 4px; cursor: pointer; font-weight: 600; margin-top: 7px; font-style: italic;}
+
+#rate_row_cmd {color: #555;line-height: 11px; font-size: 11px; font-style: italic;display:block; padding-left: 92px;}
+#valore {
+    display: inline-block;
+    font-size: 15px;
+}
+#valore b {
+    color: #c03a2a;
+}
+.spire.show--less, .spire.show--more
+{
+    width:15px;
+    height:15px;
+    margin-top:4px;
+}
+.spire.show--less
+{
+    background-position:-142px 0px;
+}
+.spire.show--more
+{
+    background-position: -125px 0px;
+}
+
+.book-info {
+    float: left;
+    width: 100%
+}
+.book-info-top {
+    margin-left: 80px;
+    float: left;
+    width: 96%;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 2%
+}
+.book-info-pic {
+    float: left;
+    width: 32%
+}
+.book-info-pic img {
+    height: 268px;
+    max-width: 100%;
+}
+
+.book-info-content {
+    float: left;
+    width: 100%;
+    border-top: 1px dashed #ff530d;
+    margin-bottom: 10px
+}
+.book-info-content a {
+    color: #0830FF
+}
+.noidung {
+    font: normal 14px Tahoma;
+    color: #ff530d
+}
+.book-info-content p {
+    font: 400 14px Tahoma;
+    color: #3e3e3e;
+    width: 96%;
+    padding: 10px 2%;
+    background: #FFF;
+    text-align: justify
+}
+.book-info-content p::-webkit-scrollbar-track {
+    background: none
+}
+.book-info-content p::-webkit-scrollbar-track-piece {
+    background: none
+}
+.book-info-content p::-webkit-scrollbar {
+    width: 2px
+}
+.book-info-content-title {
+    background: #ff530d
+}
+.book-info-chapter {
+    width: 98%;
+    float: left;
+    padding-left: 2%;
+    background: #fff
+}
+.comment-info {
+    background: #FFF;
+    float: left;
+    width: 98%;
+    padding: 10px 1%
+}
+
+#chapter,#chapter-list {
+    position: relative;
+    float: left;
+    width:100%;
+}
+#chapter .phan-trang {
+    position: absolute;
+    bottom: 0;
+    background: #fff;
+    border-top: 1px solid #ddd;
+    padding: 5px 0px;
+    margin-bottom: 0;
+    width: 98%;
+    box-sizing: border-box
+}
+#chapter .phan-trang  a{padding: 5px 10px;background: #eee;}
+#chapter .phan-trang  a:hover{background: #555 ;color:#fff}
+.chapter-list {
+    float: left;
+    width: 98%;
+    padding-bottom: 39px;
+    border-bottom: 1px dashed #ddd;
+}
+.book-info-chapter .row {
+    float: left;
+    width: 98%;
+    overflow: hidden
+}
+.book-info-chapter span {
+    float: left;
+    font-size: 14px;
+    color: #666;
+    text-align: left
+}
+.book-info-chapter span a {
+    color: #666;
+    width: 97%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    font-size: 13px;
+}
+/*.book-info-chapter span a:visited {*/
+/*    color: #d63f2f*/
+/*}*/
+/*.book-info-chapter span a:hover,*/
+/*.book-info-chapter span a:active {*/
+/*    color: #d63f2f*/
+/*}*/
+.book-info-chapter span {
+    width: 90%;
+    text-align: left;
+    line-height: 20px;
+}
+
+.book-info-chapter .title-list-chapter {
+    padding-bottom: 10px;
+    margin-top: 10px;
+    border-bottom:1px dashed #ddd;
+    margin-bottom: 5px;
+}
+.book-info-chapter .title-list-chapter span {
+    font: 700 12px Tahoma;
+    color: #222;
+}
+.book-info-binh-luan {
+    float: left;
+    width: 100%
+}
+.book-info-text {
+    float: left;
+    width: 68%;
+    min-height: 1px;
+}
+.book-info-text li {
+    width: calc(100% - 44px);
+    line-height: 27px!important;
+    padding-left: 44px;
+    margin-bottom: 7px
+}
+.book-info-text li:nth-of-type(1) {
+    font: 700 24px Tahoma;
+    color: #373737;
+}
+.book-info-text li{
+    font: 300 17px Tahoma;
+    color: #626262;
+}
+.book-info-text li.lstbtn{
+    margin-bottom:18px;
+}
+.book-info-text li.lstbtn a{
+    float: left;
+    line-height: 38px;
+}
+.book-info-text li.lstbtn a:first-child{
+    margin-right: 18px;
+}
+.book-info-text h1{
+    font-size:24px;
+}
+.book-info-text li:first-child
+{
+    margin-bottom: 20px;
+}
+.book-info-text li.li--genres{
+    font-size:15px;
+}
+.book-info-text li span {
+    color: #c0392b;
+    font-size:0.9em;
+}
+
+.book-info-text .li_bookmark {
+    font: 300 16px Tahoma;
+    color: #626262;
+}
+.book-info-text .story-alternative {
+    font: 400 13px Tahoma;
+}
+.book-info-text {position: relative;padding-bottom: 25px;}
+.comments {
+    width: 940px;
+    background: #FFF;
+    margin: 0 auto;
+    padding: 10px;
+    color: #000;
+    font-size: 12px;
+    line-height: 18px;
+    box-sizing: border-box;
+}
+
+#gioithieu {
+    font: 400 14px Tahoma;color: #3e3e3e;width: 100%;padding: 10px 2%;background: #FFF;text-align: justify; border-top: 1px dashed #c0392b;margin-bottom: 0px;float: left;overflow: hidden;
+}
+#gioithieu  h2{font-size:15px;}
+#gioithieu p{
+    margin-bottom:12px;
+}
+#gioithieu iframe {
+    max-width: 100%
+}
+#gioithieu img {
+    max-width: 100%
+}
+#gioithieu a {
+    color: #31a95b!important
+}
+#gioithieu h2 {color: #c0392b;margin: 5px 0 12px;}
+span.show-more {
+    cursor: pointer;
+    display: block;
+    padding: 3px 5px;
+    background: #e4e4e4;
+    font-size: 13px;
+    font-weight: bold;
+    color: #5c5c5c;
+    text-align: center;
+    width: 90px;
+    margin: 0 auto;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin-bottom: 5px;
+    opacity:0.9;
+}
+
+span.show-more:hover {
+    color: #222;
+    background: #e2e2e2;
+}
+.btn_truyen {
+    padding: 9px 0px;
+    margin: 5px 0px;
+    position: relative;
+    font-size: 13.5px;
+    color: white;
+    text-align: center;
+    text-shadow: 0 1px 2px rgb(0 0 0 / 25%);
+    background: #31a95b;
+    border-bottom: 2px solid #26904b;
+    cursor: pointer;
+    border-radius: 3px;
+    line-height: 16px;
+    padding: 7px 12px;
+}
+.btn_truyen:hover{
+    /* background-color:#2a9a51;*/
+    opacity:0.9;
+}
+.btn_dschuong {
+    background: #b43627;
+    border-bottom: 2px solid #97291c;
+}
+.doc-tiep-item span{
+    color: #000;
+    padding: 0px 0px;
+    font-size: 13px;
+    font-weight: bold;
+    margin: 6px 4px 4px;
+    border-radius: 13px;
+    width: 24px;
+    height: 17px;
+    opacity: 0.8;
+    float: left;
+    background-position: 6px 0px;
+    margin-top: 9px;
+}
+.doc-tiep-item p
+{
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 30px;
+    float: right;
+    line-height: 30px;
+    margin-right: 10px
+}
+.middleCol {
+    float: left;
+    width: 410px;
+    overflow: hidden
+}
+@media (max-width: 1200px) {
+
+    .middleCol {
+        width: 41%;
+        margin: 0
+    }
+
+}
+
+
+
+@media (max-width: 992px) {
+
+
+    .middleCol {
+        width: 100%;
+        margin: 10px 0 0
+    }
+
+}
+@media (max-width: 768px) {
+
+    .book-info-top {
+        float: left;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.8);
+        padding: 0;
+        margin: 0;
+    }
+}
+
