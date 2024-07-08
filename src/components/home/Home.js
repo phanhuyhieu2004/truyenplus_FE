@@ -127,9 +127,9 @@ function Home() {
                                                                 </Link>
                                                             </h3>
 
-                                                            <Link to={`/story/${story.storyId}`} className="sts sts_1">
+                                                            <Link to={`/author/${story.author}`} className="sts sts_1">
 
-                                                                {story.totalChapters} Chương
+                                                                {story.author}
                                                             </Link>
                                                         </div>
                                                     </div>

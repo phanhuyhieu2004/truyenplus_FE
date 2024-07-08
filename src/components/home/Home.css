@@ -614,12 +614,7 @@ main {
     margin-right: 5px
 }
 
-.new-chap a:visited,
-.new-chap a:hover,
-.new-chap a:active,
-.sts:visited {
-    color: #d63f2f
-}
+
 
 .phan-trang {
     float: left;

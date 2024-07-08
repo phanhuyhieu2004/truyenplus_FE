@@ -402,12 +402,7 @@ span.button.b-close span{
     color:#222;
     font-size:12px
 }
-.b-ajax-wrapper .chapter-list span a:hover{
-    color:#d63f2f
-}
-.b-ajax-wrapper .chapter-list span a:visited{
-    color:#d63f2f
-}
+
 .col-md-6{
     box-sizing:border-box;
     padding:0 10px

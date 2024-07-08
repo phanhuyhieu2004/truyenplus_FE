@@ -11,6 +11,10 @@ import ListChap from "./components/list/ListChap";
 import CreateChap from "./components/create/CreateChap";
 import Edit from "./components/edit/Edit";
 import EditChap from "./components/edit/EditChap";
+import Category from "./components/home/Category";
+import Author from "./components/home/Author";
+import Seacrh from "./components/home/Search";
+import Login from "./components/login/Login";
 
 function App() {
 
@@ -20,8 +24,17 @@ function App() {
 
       <Router>
         <Routes>
-
-          <Route
+            <Route
+                path="/chapter/:storyId/:chapterId"
+                element={
+                    <>
+                        <Header/>
+                        <Chap/>
+                        <Footer/>
+                    </>
+                }
+            />
+            <Route
               path="/home"
               element={
                 <>
@@ -30,7 +43,44 @@ function App() {
                   <Footer/>
                 </>
               }
-          /> <Route
+          />    <Route
+              path="/category/:categoryName"
+              element={
+                <>
+                  <Header/>
+                  <Category/>
+                  <Footer/>
+                </>
+              }
+          />   <Route
+              path="/search"
+              element={
+                <>
+                  <Header/>
+                  <Seacrh/>
+                  <Footer/>
+                </>
+              }
+          />   <Route
+              path="/login"
+              element={
+                <>
+                  <Header/>
+                  <Login/>
+                  <Footer/>
+                </>
+              }
+          />  <Route
+              path="/author/:author"
+              element={
+                <>
+                  <Header/>
+                  <Author/>
+                  <Footer/>
+                </>
+              }
+          />
+            <Route
               path="/list"
               element={
                 <>
@@ -39,7 +89,8 @@ function App() {
                   <Footer/>
                 </>
               }
-          />  <Route
+          />
+            <Route
             path="/chapters/:storyId"
               element={
                 <>
@@ -48,16 +99,8 @@ function App() {
                   <Footer/>
                 </>
               }
-          />  <Route
-            path="/chapter/:storyId/:chapterId"
-              element={
-                <>
-                  <Header/>
-                  <Chap/>
-                  <Footer/>
-                </>
-              }
-          />  <Route
+          />
+            <Route
               path="/create"
               element={
                 <>
@@ -100,15 +143,6 @@ function App() {
                 <>
                   <Header/>
                   <Story/>
-                  <Footer/>
-                </>
-              }
-          /> <Route
-              path="/chap"
-              element={
-                <>
-                  <Header/>
-                  <Chap/>
                   <Footer/>
                 </>
               }
