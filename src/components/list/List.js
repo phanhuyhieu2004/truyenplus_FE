@@ -8,7 +8,13 @@ function List() {
     const [currentPage, setCurrentPage] = useState(1);
     const [storiesPerPage] = useState(10);
     const [open, setOpen] = useState(false);
+    const getUser = () => {
+        const user = sessionStorage.getItem('user');
+        return user ? JSON.parse(user) : null;
+    };
 
+    const user = getUser();
+    console.log(user);
     const handleClose = () => setOpen(false);
     useEffect(() => {
         fetchStories();

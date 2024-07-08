@@ -1,17 +1,29 @@
 import { useEffect, useState } from "react";
 import "./Header.css";
 import axios from "axios";
-import {Link} from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
 
 function Header() {
     const [isActive, setIsActive] = useState(false);
     const [subMenu, setSubMenu] = useState(null);
     const [menuTitle, setMenuTitle] = useState('');
     const [categories, setCategories] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
+    const navigate = useNavigate();
+    const getUser = () => {
+        const user = sessionStorage.getItem('user');
+        return user ? JSON.parse(user) : null;
+    };
 
+    const user = getUser();
     const toggleMenu = () => {
         setIsActive(!isActive);
+    };
+    const handleLogout = () => {
+        // Xóa thông tin người dùng khỏi sessionStorage
+        sessionStorage.removeItem('user');
+        // Chuyển hướng người dùng về trang đăng nhập
+        navigate('/login');
     };
 
     useEffect(() => {
@@ -23,6 +35,7 @@ function Header() {
                 console.error('Lôi không lấy được list danh mục:', error);
             });
     }, []);
+
     const showSubMenu = (hasChildren) => {
         setSubMenu(hasChildren.querySelector('.menu-subs'));
         setMenuTitle(hasChildren.querySelector('i').parentNode.childNodes[0].textContent);
@@ -65,20 +78,30 @@ function Header() {
         };
     }, [isActive]);
 
+    const handleSearchChange = (e) => {
+        setSearchTerm(e.target.value);
+    };
+
+    const handleSearchSubmit = (e) => {
+        e.preventDefault();
+        navigate(`/search?searchTerm=${searchTerm}`);
+    };
+
     return (
         <>
-
             <header className="header">
                 <div className="container container-header">
                     <div className="header-top">
                         <div className="header-search">
                             <div className="searching">
-                                <form >
+                                <form onSubmit={handleSearchSubmit}>
                                     <input
                                         id="search"
                                         autoComplete="off"
                                         placeholder="Nhập tên hoặc tác giả..."
                                         name="q"
+                                        value={searchTerm}
+                                        onChange={handleSearchChange}
                                     />
                                     <button type="submit">
                                         <i className="fa fa-search"/>
@@ -87,7 +110,6 @@ function Header() {
                                 <div id="div--q"></div>
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <div className="container">
@@ -96,7 +118,7 @@ function Header() {
                             <div className="top-logo">
                                 <a href="/home" title="Truyện Plus - Đọc truyện online nhanh nhất">
                                     <img
-                                        src="https://github.com/phanhuyhieu2004/truyenplus_FE/blob/master/public/Remove-bg.ai_1720107171402.png"
+                                        src="https://github.com/phanhuyhieu2004/truyenplus_FE/blob/master/public/Capture(1).png?raw=true"
                                         alt="Đọc truyện Online, Truyenplus.vn"
                                         title="Đọc truyện Online, Truyenplus.vn"
                                     />
@@ -253,7 +275,7 @@ function Header() {
                                         <ul className="menu-subs menu-mega menu-column-3">
                                             {categories.map((category) => (
                                                 <li className="menu-item">
-                                                    <Link to={`/category/${category.categoryId}`}>{category.categoryName}</Link>                                                </li>
+                                                    <Link to={`/category/${category.categoryName}`}>{category.categoryName}</Link>                                                </li>
                                             ))}
                                         </ul>
                                     </li>
@@ -268,19 +290,28 @@ function Header() {
                                             NHIỆM VỤ <span className="label-menu">Free</span>
                                         </a>
                                     </li>
-                                    <li className="menu-item-has-children">
-                                        <span  className="dropdown">
+                                    {user ? (<li className="menu-item-has-children">
+                                        <span className="dropdown">
                                             TÀI KHOẢN <i className="fa fa-angle-down"/>
                                         </span>
-                                        <ul className="menu-subs menu-column-1">
+                                            <ul className="menu-subs menu-column-1">
 
-                                            <li className="menu-item">
-                                                <a href="/list">Danh sách truyện</a>
-                                            </li><li className="menu-item">
-                                                <a href="/create">Thêm truyện</a>
-                                            </li>
-                                        </ul>
-                                    </li>
+                                                <li className="menu-item">
+                                                    <a href="/list">Danh sách truyện</a>
+                                                </li>
+                                                <li className="menu-item">
+                                                    <a href="/create">Thêm truyện</a>
+                                                </li>
+                                                <li className="menu-item">
+                                                    <button onClick={handleLogout}
+                                                            style={{all: 'unset', cursor: 'pointer'}}>
+                                                        Đăng xuất
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </li>)
+                                        : ("")
+                                    }
                                 </ul>
                             </nav>
                         </div>
@@ -295,7 +326,7 @@ function Header() {
                                 <i className="ion ion-md-cart"/>
                             </a>
                             <button type="button" className="menu-mobile-trigger" onClick={toggleMenu}>
-                                <span/>
+                            <span/>
                                 <span/>
                                 <span/>
                                 <span/>
