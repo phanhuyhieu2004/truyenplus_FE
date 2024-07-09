@@ -269,9 +269,9 @@ function Header() {
                                         </ul>
                                     </li>
                                     <li className="menu-item-has-children">
-                                        <a href="/home" className="dropdown">
+                                        <span  className="dropdown">
                                             THỂ LOẠI <i className="fa fa-angle-down"/>
-                                        </a>
+                                        </span>
                                         <ul className="menu-subs menu-mega menu-column-3">
                                             {categories.map((category) => (
                                                 <li className="menu-item">

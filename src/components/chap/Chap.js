@@ -203,7 +203,7 @@ function Chap() {
                     onClick={handlePreviousChapter}
                     className={`back ${isFirstChapter ? 'disabled' : ''}`}
                 >
-                    &lt;&lt; Chương trước
+                    Chương trước
                 </span>
                         <span onClick={handleEditClick} className="btn-dschuong"/>
                         {/* eslint-disable-next-line no-undef */}
@@ -211,7 +211,7 @@ function Chap() {
                             ,        backgroundImage: 'url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAABGlBMVEUAAAD+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v5G2OW2AAAAXXRSTlMAAQIDBAUGBwgJCgsODxgaJicoKSotLzAxMzk7PUZKTE9QUVJUVVZZXF1eYWJjZmdoaWtsbXR4eX6FiYyPlJianZ6go6aorbK0tbe8vsXK2dze5ujp6/Hz9ff5+/1wsAonAAABHUlEQVQoz42S11KbYQxEz/djegmdGNMceoeEZqrBJHQw1Qb7vP9rcGEwP0OZ6Eqj1UirXcF/RpiZILlZ9xGo1ZWiPbHO8JIcW7IcVevr2gGQXCuP8dPd0QBEw4EzTdM8wLk2gloH0akXiyXNzxWcTWUcpN3cdIAB36Jcz7H3rzsO1ZvNgyd1iISuFe0GYEqzEbTk9QdheY7kfgPw5+TJQgKgXa+3uqpEVQ8BiFQz74C/nwHpnYLFBECH3mZ7Y/JMarYGWvPaRvg9T/9eIwA59W47V1LTJHTjsUI3GTvQJo6qB4Z/Xi6X9Gr6wYVUxiE6K5IQhiNOdZzm1DsRAVi1MrdvtfyLXndGXu350qi4tUsPcWvfnmGc7u36b97lGQOvSU4gttpoAAAAAElFTkSuQmCC")'}}/>
                         <span onClick={handleNextChapter}
                               className={`next ${isLastChapter ? 'disabled' : ''}`}>
-                    Chương tiếp &gt;&gt;
+                    Chương tiếp
                 </span>
                     </div>
                     <div>
