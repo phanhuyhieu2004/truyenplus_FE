@@ -145,15 +145,8 @@
 
     font-size: 13px;
 }
-/*.book-info-chapter span a:visited {*/
-/*    color: #d63f2f*/
-/*}*/
-/*.book-info-chapter span a:hover,*/
-/*.book-info-chapter span a:active {*/
-/*    color: #d63f2f*/
-/*}*/
+
 .book-info-chapter span {
-    width: 90%;
     text-align: left;
     line-height: 20px;
 }
