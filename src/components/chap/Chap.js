@@ -126,7 +126,10 @@ function Chap() {
         if (currentChapterIndex > 0) {
             const previousChapterId = chapters[currentChapterIndex - 1]?.chapterId;
             if (previousChapterId) {
+                window.scrollTo(0, 0);
+
                 navigate(`/chapter/${storyId}/${previousChapterId}`);
+
             }
         }
     };
@@ -135,10 +138,13 @@ function Chap() {
         if (currentChapterIndex < chapters.length - 1) {
             const nextChapterId = chapters[currentChapterIndex + 1]?.chapterId;
             if (nextChapterId) {
+                window.scrollTo(0, 0);
                 navigate(`/chapter/${storyId}/${nextChapterId}`);
+
             }
         }
     };
+
 
     return (
         <div>
@@ -204,7 +210,7 @@ function Chap() {
             <div
                 className="vung-doc"
                 id="vungdoc"
-                style={{ backgroundColor: backgroundColor, color: color }}
+                style={{backgroundColor: backgroundColor, color: color}}
             >
                 <div className="chapter_wrap">
                     <div className="chapter_control" id="gotochap">
@@ -216,8 +222,11 @@ function Chap() {
                 </span>
                         <span onClick={handleEditClick} className="btn-dschuong"/>
                         {/* eslint-disable-next-line no-undef */}
-                        <span onClick={handleSettingClick} className="btn-dschuong" style={{marginLeft:'5px'
-                            ,        backgroundImage: 'url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAABGlBMVEUAAAD+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v5G2OW2AAAAXXRSTlMAAQIDBAUGBwgJCgsODxgaJicoKSotLzAxMzk7PUZKTE9QUVJUVVZZXF1eYWJjZmdoaWtsbXR4eX6FiYyPlJianZ6go6aorbK0tbe8vsXK2dze5ujp6/Hz9ff5+/1wsAonAAABHUlEQVQoz42S11KbYQxEz/djegmdGNMceoeEZqrBJHQw1Qb7vP9rcGEwP0OZ6Eqj1UirXcF/RpiZILlZ9xGo1ZWiPbHO8JIcW7IcVevr2gGQXCuP8dPd0QBEw4EzTdM8wLk2gloH0akXiyXNzxWcTWUcpN3cdIAB36Jcz7H3rzsO1ZvNgyd1iISuFe0GYEqzEbTk9QdheY7kfgPw5+TJQgKgXa+3uqpEVQ8BiFQz74C/nwHpnYLFBECH3mZ7Y/JMarYGWvPaRvg9T/9eIwA59W47V1LTJHTjsUI3GTvQJo6qB4Z/Xi6X9Gr6wYVUxiE6K5IQhiNOdZzm1DsRAVi1MrdvtfyLXndGXu350qi4tUsPcWvfnmGc7u36b97lGQOvSU4gttpoAAAAAElFTkSuQmCC")'}}/>
+                        <span onClick={handleSettingClick} className="btn-dschuong" style={{
+                            marginLeft: '5px'
+                            ,
+                            backgroundImage: 'url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAABGlBMVEUAAAD+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v5G2OW2AAAAXXRSTlMAAQIDBAUGBwgJCgsODxgaJicoKSotLzAxMzk7PUZKTE9QUVJUVVZZXF1eYWJjZmdoaWtsbXR4eX6FiYyPlJianZ6go6aorbK0tbe8vsXK2dze5ujp6/Hz9ff5+/1wsAonAAABHUlEQVQoz42S11KbYQxEz/djegmdGNMceoeEZqrBJHQw1Qb7vP9rcGEwP0OZ6Eqj1UirXcF/RpiZILlZ9xGo1ZWiPbHO8JIcW7IcVevr2gGQXCuP8dPd0QBEw4EzTdM8wLk2gloH0akXiyXNzxWcTWUcpN3cdIAB36Jcz7H3rzsO1ZvNgyd1iISuFe0GYEqzEbTk9QdheY7kfgPw5+TJQgKgXa+3uqpEVQ8BiFQz74C/nwHpnYLFBECH3mZ7Y/JMarYGWvPaRvg9T/9eIwA59W47V1LTJHTjsUI3GTvQJo6qB4Z/Xi6X9Gr6wYVUxiE6K5IQhiNOdZzm1DsRAVi1MrdvtfyLXndGXu350qi4tUsPcWvfnmGc7u36b97lGQOvSU4gttpoAAAAAElFTkSuQmCC")'
+                        }}/>
                         <span onClick={handleNextChapter}
                               className={`next ${isLastChapter ? 'disabled' : ''}`}>
                     Chương tiếp
@@ -234,25 +243,38 @@ function Chap() {
                     </div>
                     <div className="clearfix"/>
                 </div>
-                <div className="truyen" style={{ overflow: 'hidden', backgroundColor: backgroundColor, color: color }}>
-                    <div >
+                <div className="truyen" style={{overflow: 'hidden', backgroundColor: backgroundColor, color: color}}>
+                    <div>
                         <ReactQuill
                             value={chapter.content}
                             readOnly={true}
                             theme={"bubble"}
                             modules={modules}
                             formats={formats}
-                            className={`ql-container ql-size-${fontSize <= 12 ? 'small' : fontSize <= 18 ? 'medium' : 'large'}`}                        />
+                            className={`ql-container ql-size-${fontSize <= 12 ? 'small' : fontSize <= 18 ? 'medium' : 'large'}`}/>
                     </div>
                 </div>
                 <div className="chapter_wrap">
-                    <div className="clearfix"/>
-                    <div className="chapter_control control--last">
-                    <span onClick={handleNextChapter}
-                          className={`next ${isLastChapter ? 'disabled' : ''}`}>
-                        Chương tiếp &gt;&gt;
-                    </span>
+                    <div className="chapter_control" id="gotochap">
+                <span
+                    onClick={handlePreviousChapter}
+                    className={`back ${isFirstChapter ? 'disabled' : ''}`}
+                >
+                    Chương trước
+                </span>
+                        <span onClick={handleEditClick} className="btn-dschuong"/>
+                        {/* eslint-disable-next-line no-undef */}
+                        <span onClick={handleSettingClick} className="btn-dschuong" style={{
+                            marginLeft: '5px'
+                            ,
+                            backgroundImage: 'url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAABGlBMVEUAAAD+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v5G2OW2AAAAXXRSTlMAAQIDBAUGBwgJCgsODxgaJicoKSotLzAxMzk7PUZKTE9QUVJUVVZZXF1eYWJjZmdoaWtsbXR4eX6FiYyPlJianZ6go6aorbK0tbe8vsXK2dze5ujp6/Hz9ff5+/1wsAonAAABHUlEQVQoz42S11KbYQxEz/djegmdGNMceoeEZqrBJHQw1Qb7vP9rcGEwP0OZ6Eqj1UirXcF/RpiZILlZ9xGo1ZWiPbHO8JIcW7IcVevr2gGQXCuP8dPd0QBEw4EzTdM8wLk2gloH0akXiyXNzxWcTWUcpN3cdIAB36Jcz7H3rzsO1ZvNgyd1iISuFe0GYEqzEbTk9QdheY7kfgPw5+TJQgKgXa+3uqpEVQ8BiFQz74C/nwHpnYLFBECH3mZ7Y/JMarYGWvPaRvg9T/9eIwA59W47V1LTJHTjsUI3GTvQJo6qB4Z/Xi6X9Gr6wYVUxiE6K5IQhiNOdZzm1DsRAVi1MrdvtfyLXndGXu350qi4tUsPcWvfnmGc7u36b97lGQOvSU4gttpoAAAAAElFTkSuQmCC")'
+                        }}/>
+                        <span onClick={handleNextChapter}
+                              className={`next ${isLastChapter ? 'disabled' : ''}`}>
+                    Chương tiếp
+                </span>
                     </div>
+
                     <div className="clearfix"/>
                 </div>
             </div>
@@ -285,11 +307,18 @@ function Chap() {
             <Dialog open={openSettingModal} onClose={handleCloseSettingModal}>
                 <div id="browse-chapter">
                     <div className="title-list-chapter"><span>Cài đặt</span>
-                        <Close  onClick={handleCloseSettingModal}  style={{position:"absolute", top:'0', right:'10px', width:'unset'}}/>
+                        <Close onClick={handleCloseSettingModal}
+                               style={{position: "absolute", top: '0', right: '10px', width: 'unset'}}/>
                     </div>
                     <div className="content">
                         <div className="b-ajax-wrapper">
                             <div className="col-md-6 col-sm-12">
+                                <span style={{
+                                    font: '700 12px Tahoma',
+
+                                }}>
+   Phóng to/nhỏ nội dung :
+</span>
                                 <div className="zoom-controls">
                                     <IconButton onClick={handleZoomOut} disabled={fontSize <= minFontSize}>
                                         <ZoomOutIcon/>
@@ -300,7 +329,11 @@ function Chap() {
                                 </div>
                             </div>
                             <div className="col-md-6 col-sm-12">
-                                <div className="color-controls">
+<span style={{font: '700 12px Tahoma',
+
+   }}>
+    Màu nền chương :
+</span>                                <div className="color-controls">
                                     <IconButton style={{backgroundColor: '#000000', margin: '5px', color: '#ffffff'}}
                                                 onClick={() => handleColorChange('#000000', '#ffffff')}/>
                                     <IconButton style={{backgroundColor: 'pink', margin: '5px', color: '#000000'}}
