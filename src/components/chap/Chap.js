@@ -13,17 +13,27 @@ function Chap() {
     const [openSettingModal, setOpenSettingModal] = useState(false);
     const {chapterId, storyId} = useParams();
     const navigate = useNavigate();
-    const [zoomLevel, setZoomLevel] = useState(100); // Initial zoom level, in percentage
-    const [chapters, setChapters] = useState([]);
+    const [fontSize, setFontSize] = useState(16);    const [chapters, setChapters] = useState([]);
     const [chapter, setChapter] = useState(null);
     const [backgroundColor, setBackgroundColor] = useState("#ffffff"); // Initial background color
     const [color, setColor] = useState("#000000"); // Initial text color
-    const minZoomLevel = 50; // Minimum zoom level
-    const maxZoomLevel = 200; // Maximum zoom level
+    const minFontSize = 10; // Minimum font size
+    const maxFontSize = 30; // Maximum font size
     const handleColorChange = (backgroundColor, color) => {
         setBackgroundColor(backgroundColor); // Set background color state
         setColor(color); // Set text color state
     };
+    const modules = {
+        toolbar: false,
+    };
+
+    const formats = [
+        'size',
+        'bold', 'italic', 'underline', 'strike',
+        'blockquote', 'code-block',
+        'list', 'bullet', 'indent',
+        'link', 'image',
+    ];
     useEffect(() => {
         const fetchChapterInfo = async () => {
             try {
@@ -63,11 +73,11 @@ function Chap() {
     };
 
     const handleZoomIn = () => {
-        setZoomLevel(prevZoom => Math.min(prevZoom + 10, maxZoomLevel)); // Increase zoom level within limit
+        setFontSize(prevSize => Math.min(prevSize + 2, maxFontSize)); // Increase font size within limit
     };
 
     const handleZoomOut = () => {
-        setZoomLevel(prevZoom => Math.max(prevZoom - 10, minZoomLevel)); // Decrease zoom level within limit
+        setFontSize(prevSize => Math.max(prevSize - 2, minFontSize)); // Decrease font size within limit
     };
 
     const handleEditClick = () => {
@@ -194,8 +204,7 @@ function Chap() {
             <div
                 className="vung-doc"
                 id="vungdoc"
-                style={{backgroundColor: "#fafaf3", color: "#000000", fontSize: 18}}
-
+                style={{ backgroundColor: backgroundColor, color: color }}
             >
                 <div className="chapter_wrap">
                     <div className="chapter_control" id="gotochap">
@@ -225,12 +234,15 @@ function Chap() {
                     </div>
                     <div className="clearfix"/>
                 </div>
-                <div className="truyen" style={{ overflow: 'hidden', backgroundColor: backgroundColor, color: color }}>                    <div style={{transform: `scale(${zoomLevel / 100})`, transformOrigin: 'top left'}}>
+                <div className="truyen" style={{ overflow: 'hidden', backgroundColor: backgroundColor, color: color }}>
+                    <div >
                         <ReactQuill
                             value={chapter.content}
                             readOnly={true}
                             theme={"bubble"}
-                        />
+                            modules={modules}
+                            formats={formats}
+                            className={`ql-container ql-size-${fontSize <= 12 ? 'small' : fontSize <= 18 ? 'medium' : 'large'}`}                        />
                     </div>
                 </div>
                 <div className="chapter_wrap">
@@ -278,12 +290,12 @@ function Chap() {
                     <div className="content">
                         <div className="b-ajax-wrapper">
                             <div className="col-md-6 col-sm-12">
-                                <div className="zoom-buttons">
-                                    <IconButton onClick={handleZoomIn}>
-                                        <ZoomInIcon/>
-                                    </IconButton>
-                                    <IconButton onClick={handleZoomOut}>
+                                <div className="zoom-controls">
+                                    <IconButton onClick={handleZoomOut} disabled={fontSize <= minFontSize}>
                                         <ZoomOutIcon/>
+                                    </IconButton>
+                                    <IconButton onClick={handleZoomIn} disabled={fontSize >= maxFontSize}>
+                                        <ZoomInIcon/>
                                     </IconButton>
                                 </div>
                             </div>
@@ -291,8 +303,8 @@ function Chap() {
                                 <div className="color-controls">
                                     <IconButton style={{backgroundColor: '#000000', margin: '5px', color: '#ffffff'}}
                                                 onClick={() => handleColorChange('#000000', '#ffffff')}/>
-                                    <IconButton style={{backgroundColor: '#ffffff', margin: '5px', color: '#000000'}}
-                                                onClick={() => handleColorChange('#ffffff', '#000000')}/>
+                                    <IconButton style={{backgroundColor: 'pink', margin: '5px', color: '#000000'}}
+                                                onClick={() => handleColorChange('pink', '#000000')}/>
                                     <IconButton style={{backgroundColor: '#ff0000', margin: '5px', color: '#ffffff'}}
                                                 onClick={() => handleColorChange('#ff0000', '#ffffff')}/>
                                     <IconButton style={{backgroundColor: '#00ff00', margin: '5px', color: '#000000'}}

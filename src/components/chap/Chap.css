@@ -3,7 +3,6 @@
     flex-grow: 1;
 }
 .vung-doc{
-    max-width:940px;
     margin:0 auto;
     color:#000;
     font-size:18px;
@@ -140,6 +139,26 @@ span.disabled {
     margin-right: 5px;
     letter-spacing: 0.5px;
 }
+
+
+.ql-container {
+    font-size: 16px !important;
+}
+
+
+.ql-size-small .ql-editor {
+    font-size: 10px !important;
+}
+
+.ql-size-medium .ql-editor {
+    font-size: 16px !important;
+}
+
+.ql-size-large .ql-editor {
+    font-size: 30px !important;
+}
+
+
 .current-book{
     font-size:20px;
     line-height:30px;
@@ -407,7 +426,7 @@ span.button.b-close span{
 
 .col-md-6{
     box-sizing:border-box;
-    padding:0 10px
+
 }
 .btn-dschuong{
     background:#27ae60 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUBAMAAAB/pwA+AAAAKlBMVEUAAAD8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/PwWR7DYAAAADXRSTlMAAQIFBxRLT3WFpq3kZrRhIQAAADRJREFUCFtjYEAA11AoCGI4excKbjDAWHdvMqyFMa8xEAR7YWqvI5uAZK4pzLZAHCZQ7BwAFBVWgG+WqdEAAAAASUVORK5CYII=);
