@@ -215,7 +215,8 @@ console.log("vieư là :",story)
                                             <h3>
 
                                                 <Link to={`/story/${view.storyId}`}>
-                                                    {view.title}<i>Lượt xem : {view.view}</i>
+                                                    {view.title} <i className="fa-solid fa-eye"> {view.view}</i>
+
                                                 </Link>
                                             </h3>
                                         </div>
