@@ -87,7 +87,9 @@ function Chap() {
         setOpenSettingModal(true);
     };
 
-
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' }); // Cuộn lên đầu trang khi component được mount hoặc cập nhật
+    }, [chapterId]);
 
     useEffect(() => {
         const fetchChapters = async () => {
@@ -126,8 +128,6 @@ function Chap() {
         if (currentChapterIndex > 0) {
             const previousChapterId = chapters[currentChapterIndex - 1]?.chapterId;
             if (previousChapterId) {
-                window.scrollTo(0, 0);
-
                 navigate(`/chapter/${storyId}/${previousChapterId}`);
 
             }
@@ -138,13 +138,11 @@ function Chap() {
         if (currentChapterIndex < chapters.length - 1) {
             const nextChapterId = chapters[currentChapterIndex + 1]?.chapterId;
             if (nextChapterId) {
-                window.scrollTo(0, 0);
                 navigate(`/chapter/${storyId}/${nextChapterId}`);
 
             }
         }
     };
-
 
     return (
         <div>
