@@ -15,13 +15,13 @@ function Chap() {
     const navigate = useNavigate();
     const [fontSize, setFontSize] = useState(16);    const [chapters, setChapters] = useState([]);
     const [chapter, setChapter] = useState(null);
-    const [backgroundColor, setBackgroundColor] = useState("#ffffff"); // Initial background color
+    const [backgroundColor, setBackgroundColor] = useState("#ffffff");
     const [color, setColor] = useState("#000000"); // Initial text color
-    const minFontSize = 10; // Minimum font size
-    const maxFontSize = 30; // Maximum font size
+    const minFontSize = 10;
+    const maxFontSize = 30;
     const handleColorChange = (backgroundColor, color) => {
-        setBackgroundColor(backgroundColor); // Set background color state
-        setColor(color); // Set text color state
+        setBackgroundColor(backgroundColor);
+        setColor(color);
     };
     const modules = {
         toolbar: false,
@@ -90,7 +90,13 @@ function Chap() {
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: 'smooth' }); // Cuộn lên đầu trang khi component được mount hoặc cập nhật
     }, [chapterId]);
-
+    useEffect(() => {
+        if (chapter) {
+            document.title = `${chapter.story.title} - Chương ${chapter.chapterNumber} - ${chapter.title}`;
+        } else {
+            document.title = "Truyện Plus +";
+        }
+    }, [chapter]);
     useEffect(() => {
         const fetchChapters = async () => {
             try {
@@ -332,14 +338,16 @@ function Chap() {
    }}>
     Màu nền chương :
 </span>                                <div className="color-controls">
-                                    <IconButton style={{backgroundColor: '#000000', margin: '5px', color: '#ffffff'}}
-                                                onClick={() => handleColorChange('#000000', '#ffffff')}/>
+                                    <IconButton style={{backgroundImage: ' linear-gradient(to bottom right, red, yellow)', margin: '5px', color: '#ffffff'}}
+                                                onClick={() => handleColorChange('black', '#ffffff')}/>
                                     <IconButton style={{backgroundColor: 'pink', margin: '5px', color: '#000000'}}
                                                 onClick={() => handleColorChange('pink', '#000000')}/>
                                     <IconButton style={{backgroundColor: '#ff0000', margin: '5px', color: '#ffffff'}}
                                                 onClick={() => handleColorChange('#ff0000', '#ffffff')}/>
                                     <IconButton style={{backgroundColor: '#00ff00', margin: '5px', color: '#000000'}}
                                                 onClick={() => handleColorChange('#00ff00', '#000000')}/>
+                                <IconButton style={{backgroundColor: 'white', margin: '5px', color: '#000000',border: '1px solid black'}}
+                                                onClick={() => handleColorChange('white', '#000000')}/>
                                 </div>                            </div>
 
 
