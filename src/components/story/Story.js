@@ -43,6 +43,13 @@ console.log("vieư là :",story)
         fetchChapters();
     }, [storyId]);
     useEffect(() => {
+        if (story) {
+            document.title = `${story.title} - ${story.author} `;
+        } else {
+            document.title = "Truyện Plus +";
+        }
+    }, [story]);
+    useEffect(() => {
         const fetchViewStory = () => {
             axios.get(`https://poetic-heart-production.up.railway.app/api/stories/view`)
                 .then(response => {
