@@ -172,7 +172,7 @@ function Chap() {
                 title="Truyện Plus"
             >
               <span itemProp="name" className="bc-sm-hidden">
-                Đọc truyện online
+                                            <i className="fa-solid fa-house"></i> Trang chủ
               </span>
               <span itemProp="name" className="bc-home">
                 Truyện

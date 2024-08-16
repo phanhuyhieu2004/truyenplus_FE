@@ -57,7 +57,7 @@ header .container {
 }
 
 .searching form input:focus {
-    border: 1px solid #a14840;
+    border: 1px solid #0093E9;
     border-right: none
 }
 
@@ -114,12 +114,12 @@ background-color: #0093E9;
 }
 
 .searching button:hover:before {
-    border-right-color: #e54040
+    border-right-color: #0093E9
 }
 
 .searching button:focus:before,
 .searching button:active:before {
-    border-right-color: #c42f2f
+    border-right-color: #0093E9
 }
 
 .searching button::-moz-focus-inner {
@@ -173,13 +173,14 @@ span.item-name a:first-child:before {
 
 
 #menu li:hover > a {
-    color: #c0392b;
+    color: #0093E9;
 }
 
 #menu li span.label-menu {
     font-size: 11px;
     top: -20px;
-    background: #cc1818;
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
     line-height: 13px;
     padding: 2px 5px;
     right: 25px;
@@ -380,7 +381,7 @@ span.item-name a:first-child:before {
     opacity: 0;
     visibility: hidden;
     border-radius: 0.25rem;
-    border-top: 3px solid #b43627;
+    border-top: 3px solid #0093E9;
     background: #fafafa;
     -webkit-box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -506,7 +507,7 @@ span.item-name a:first-child:before {
     padding: 0.75rem 0;
     border: none;
     outline: none;
-    color: #e91e63;
+    color: #0093E9;
     text-transform: uppercase;
     text-rendering: optimizeLegibility;
     -webkit-transition: all 0.3s ease-in-out;

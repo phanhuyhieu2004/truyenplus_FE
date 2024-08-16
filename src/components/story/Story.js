@@ -87,7 +87,7 @@ return (
                                 <span itemProp="itemListElement" itemScope="" itemType="/home">
                                     <a itemProp="item" href="/home" className="home" title="Truyện Plus">
                                         <span itemProp="name" className="bc-sm-hidden">
-                                            Truyện Plus
+                                            <i className="fa-solid fa-house"></i> Trang chủ
                                         </span>
                                         <span className="bc-home">Truyện</span>
                                         <meta itemProp="position" content={1}/>

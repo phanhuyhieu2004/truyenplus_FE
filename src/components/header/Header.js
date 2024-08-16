@@ -198,7 +198,8 @@ function Header() {
                                         <ul className="menu-subs menu-mega menu-column-3">
                                             {categories.map((category) => (
                                                 <li className="menu-item">
-                                                    <Link to={`/category/${category.categoryName}`}>{category.categoryName}</Link>                                                </li>
+                                                    <Link to={`/category/${category.categoryName}`}><i class="fa fa-tags"></i> {category.categoryName}
+                                                    </Link></li>
                                             ))}
                                         </ul>
                                     </li>

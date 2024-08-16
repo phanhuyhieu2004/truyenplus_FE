@@ -86,7 +86,7 @@ function Home() {
             <>
                 <main>
                     <div className='loading-container' style={{margin: '150px 100px',textAlign:'center'}}>
-                       <CircularProgress color="error" size={100} />
+                       <CircularProgress size={100} />
                     </div>
 
                 </main>
@@ -116,7 +116,8 @@ function Home() {
                                                 {stories.map((story, index) => (
                                                     <div className="item" key={index}>
 <div style={{position: 'relative',
-    overflow: 'hidden'}}>                                                        <Link className="cover" to={`/story/${story.storyId}`}>
+    overflow: 'hidden',width: 'fit-content',
+    height: '270px'}}>                                                        <Link className="cover" to={`/story/${story.storyId}`}>
     <img src={story.image}
          alt={story.title}/>
     <span className="full-label"></span> </Link>
