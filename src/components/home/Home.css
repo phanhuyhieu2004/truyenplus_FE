@@ -6,7 +6,25 @@ main {
     font-size: 15px;
     flex:1
 }
-
+.item .full-label {
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);    left: -30px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    position: absolute;
+    top: -20px;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+    transform-origin: center;
+    -webkit-transform-origin: center;
+}
+.item .full-label::before {
+    content: "New";
+}
 .title {
     padding: 7px 15px 8px 30px;
     font-weight: 600;
@@ -304,17 +322,6 @@ main {
     display: table;
 }
 
-.item .full-label {
-    width: 34px;
-    height: 50px;
-    position: absolute;
-    bottom: 4px;
-    left: 0;
-    display: block;
-    margin: 140px 0 0 -6px;
-    z-index: 1;
-    background: transparent url(https://s3.cloud.cmctelecom.vn/tinhte1/2018/04/4282714_9PShuk4.jpg) no-repeat;
-}
 
 .sts {
     padding-left: 0;
@@ -515,12 +522,14 @@ main {
 }
 
 .update-title {
-    background: #4a4a4a;
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
     padding: 7px 15px 8px 2px
 }
 
 .daily-update .update-title {
-    padding-left: 10px
+    padding-left: 10px;
+    text-transform: uppercase;
 }
 
 .daily-update-item {

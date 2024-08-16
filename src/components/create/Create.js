@@ -82,7 +82,7 @@ function Create() {
 
     useEffect(() => {
         const fetchCategories = () => {
-            axios.get('https://poetic-heart-production.up.railway.app/api/categories')
+            axios.get('http://localhost:8080/api/categories')
                 .then(response => {
                     setCategories(response.data);
                 })
@@ -138,7 +138,7 @@ function Create() {
             categories: selectedCategories
         };
 
-        axios.post("https://poetic-heart-production.up.railway.app/api/stories", data, {
+        axios.post("http://localhost:8080/api/stories", data, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }

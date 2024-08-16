@@ -17,6 +17,7 @@ import Author from "./components/home/Author";
 import Search from "./components/home/Search";
 import Login from "./components/login/Login";
 import BasicExampleDataGridPro from "./components/story/BasicExampleDataGridPro";
+import PrivateRoute from "./PrivateRoute";
 
 function App() {
     return (
@@ -82,6 +83,7 @@ function App() {
                         </>
                     }
                 />
+                <Route element={<PrivateRoute redirectTo="/login"/>}>
                 <Route
                     path="/list"
                     element={
@@ -141,7 +143,7 @@ function App() {
                             <Footer />
                         </>
                     }
-                />
+                />  />
                 <Route
                     path="/story/:storyId"
                     element={
@@ -162,6 +164,7 @@ function App() {
                         </>
                     }
                 />
+                </Route>
             </Routes>
         </div>
     );

@@ -37,7 +37,7 @@ function Chap() {
     useEffect(() => {
         const fetchChapterInfo = async () => {
             try {
-                const response = await axios.get(`https://poetic-heart-production.up.railway.app/api/chapters/${chapterId}`);
+                const response = await axios.get(`http://localhost:8080/api/chapters/${chapterId}`);
                 setChapter(response.data);
             } catch (error) {
                 console.error('Lỗi rồi:', error);
@@ -52,7 +52,7 @@ function Chap() {
     useEffect(() => {
         const fetchChapters = async () => {
             try {
-                const response = await axios.get(`https://poetic-heart-production.up.railway.app/api/chapters/story/${storyId}`);
+                const response = await axios.get(`http://localhost:8080/api/chapters/story/${storyId}`);
                 const sortedChapters = response.data.sort((a, b) => a.chapterId - b.chapterId);
                 setChapters(sortedChapters);
             } catch (error) {
@@ -100,7 +100,7 @@ function Chap() {
     useEffect(() => {
         const fetchChapters = async () => {
             try {
-                const response = await axios.get(`https://poetic-heart-production.up.railway.app/api/chapters/story/${storyId}`);
+                const response = await axios.get(`http://localhost:8080/api/chapters/story/${storyId}`);
                 // Sắp xếp các chương theo `chapterNumber`
                 const sortedChapters = response.data.sort((a, b) => a.chapterId - b.chapterId);
                 setChapters(sortedChapters);

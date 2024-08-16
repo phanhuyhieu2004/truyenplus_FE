@@ -13,7 +13,7 @@ function ListChap() {
     const handleClose = () => setOpen(false);
     const fetchChapters = useCallback(async () => {
         try {
-            const response = await axios.get(`https://poetic-heart-production.up.railway.app/api/chapters/story/${storyId}`);
+            const response = await axios.get(`http://localhost:8080/api/chapters/story/${storyId}`);
             const sortedChapters = response.data.sort((a, b) => a.chapterId - b.chapterId);
             setChapters(sortedChapters);
         } catch (error) {
@@ -27,7 +27,7 @@ function ListChap() {
 
     const deleteChapters = (chapterId) => {
         if (window.confirm('Bạn có chắc muốn xoá chương không?')) {
-            axios.delete(`https://poetic-heart-production.up.railway.app/api/chapters/${chapterId}`)
+            axios.delete(`http://localhost:8080/api/chapters/${chapterId}`)
                 .then(() => {
                     setOpen(true)
                     fetchChapters();

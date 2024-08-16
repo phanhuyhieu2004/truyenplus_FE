@@ -21,7 +21,7 @@ function Author() {
     },[]);
 
     useEffect(() => {
-        axios.get(`https://poetic-heart-production.up.railway.app/api/stories/author?author=${author}`)
+        axios.get(`http://localhost:8080/api/stories/author?author=${author}`)
             .then(response => {
                 setSearchAuthor(response.data);
             })

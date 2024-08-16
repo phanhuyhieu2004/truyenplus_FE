@@ -1,119 +1,92 @@
-import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
+import "./Login.css"
+import React, {useState} from "react";
+import {useNavigate} from "react-router-dom";
+import axios from "axios";
 
-import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useNavigate } from 'react-router-dom'; // Import useHistory từ react-router-dom
-import axios from 'axios'; // Import axios
+function Login() {
+    const [statusEye, setStatusEye] = useState(false);
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const navigate = useNavigate();
+    const handleClick = () => {
+        setStatusEye(statusEye => !statusEye);
 
-function Copyright(props) {
-    return (
-        <Typography variant="body2" color="text.secondary" align="center" {...props}>
-            {'Copyright © '}
-            <Link color="inherit" href="https://mui.com/">
-                Truyen Plus +
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
+    }
 
-const defaultTheme = createTheme();
+    const handleSubmit = (event) => {
+        event.preventDefault(); // Ngăn chặn form tự động gửi đi và tải lại trang
 
-export default function Login() {
-    const navigate = useNavigate(); // Sử dụng useHistory hook từ react-router-dom
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        const email = data.get('email');
-        const password = data.get('password');
-
-        try {
-            const response = await axios.post('https://poetic-heart-production.up.railway.app/api/account/login', {
-                name: email,
-                password: password,
-            });
-
-            if (response.status === 200) {
-                // Lưu thông tin người dùng vào sessionStorage hoặc localStorage
-                sessionStorage.setItem('user', JSON.stringify(response.data));
-                // Chuyển hướng tới trang /list
-                navigate('/list');
-            } else {
-                alert('Thông tin đăng nhập không chính xác');
-            }
-        } catch (error) {
-            console.error('Đã xảy ra lỗi:', error);
-            alert('Đã xảy ra lỗi khi đăng nhập');
+        if (username.length < 5 || username.length > 15) {
+            alert("Tên đăng nhập phải tối thiểu từ 5 đến tối đa là  15 ký tự");
+            return;
         }
-    };
+        if (password.length < 5 || password.length > 15) {
+            alert("Mật khẩu phải tối thiểu từ 5 đến tối đa là  15 ký tự");
+            return;
+        }
+        axios.post("http://localhost:8080/api/account/login", {
+            name: username,
+            pass: password
+        })
+            .then(response => {
+                console.log(response.data);
+                const  user  = response.data;
+                console.log("tài khoản là ",user)
+                if (user) {
+                    // lưu tài khoản vừa đăng nhâập vaào localStrage
+                    localStorage.setItem("user", JSON.stringify(user));
+                    alert("Đăng nhập thành công!");
+                    navigate("/home");
+                } else {
+                    console.error("Dữ liệu người dùng không có trong phản hồi.");
+                }
+            })
 
+            .catch(error => {
+                if (error.response && error.response.data && error.response.data.message) {
+                    alert(error.response.data.message);
+                } else {
+                    alert('Lỗi không xác định.');
+                    console.log("Lỗi", error)
+                }
+            });
+    }
     return (
-        <ThemeProvider theme={defaultTheme}>
-            <Container component="main" maxWidth="xs">
-                <CssBaseline />
-                <Box
-                    sx={{
-                        marginTop: 8,
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                    }}
-                >
-                    <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                        <LockOutlinedIcon />
-                    </Avatar>
-                    <Typography component="h1" variant="h5">
-                        Sign in
-                    </Typography>
-                    <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-                        <TextField
-                            margin="normal"
-                            required
-                            fullWidth
-                            id="email"
-                            label="Email Address"
-                            name="email"
-                            autoComplete="email"
-                            autoFocus
-                        />
-                        <TextField
-                            margin="normal"
-                            required
-                            fullWidth
-                            name="password"
-                            label="Password"
-                            type="password"
-                            id="password"
-                            autoComplete="current-password"
-                        />
-                        <FormControlLabel
-                            control={<Checkbox value="remember" color="primary" />}
-                            label="Remember me"
-                        />
-                        <Button
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            sx={{ mt: 3, mb: 2 }}
-                        >
-                            Sign In
-                        </Button>
-                    </Box>
-                </Box>
-                <Copyright sx={{ mt: 8, mb: 4 }} />
-            </Container>
-        </ThemeProvider>
-    );
+        <>
+            <main className="main-content">
+                <div className="container login-container">
+                    <form className="form-login" onSubmit={handleSubmit}>
+                        <h1 className="form-heading">Đăng nhập</h1>
+                        <div className="form-group">
+                            <i class="far fa-user"></i>
+                            <input type="text" className="form-input" placeholder="Tên đăng nhập" value={username}
+                                   onChange={(e) => setUsername(e.target.value)}/>
+
+                        </div>
+                        <div className="form-group">
+                            <i className="fas fa-key"></i>
+                            <input type={statusEye ? "text" : "password"} className="form-input" placeholder="Mật khẩu"
+                                   value={password}
+                                   onChange={(e) => setPassword(e.target.value)}
+                            />
+                            <div className="eye" onClick={handleClick}>
+                                <i className={statusEye ? "fa-solid fa-eye" : "fa-solid fa-eye-slash"}></i>
+                            </div>
+                        </div>
+                        <div className="form-link">
+                            <span>Chưa có tài khoản ? </span>
+
+                            <a href="/register">Đăng ký</a>
+                        </div>
+                        <input type="submit" className="form-submit" value={"Đăng nhập"}/>
+                    </form>
+
+
+                </div>
+            </main>
+        </>
+    )
 }
+
+export default Login;

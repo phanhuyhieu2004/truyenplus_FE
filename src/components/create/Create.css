@@ -128,8 +128,8 @@ textarea::placeholder {
     -ms-transition: all 0.4s ease-out 0s;
     -o-transition: all 0.4s ease-out 0s;
     transition: all 0.4s ease-out 0s;
-    background: linear-gradient(to right, #b43627 0%, #c63b2a 50%, #b43627 100%);
-    border-radius: 40px;
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);    border-radius: 40px;
 }
 
 .form-profile .btn-form {
@@ -329,7 +329,8 @@ textarea::placeholder {
     -ms-transition: all 0.4s ease-out 0s;
     -o-transition: all 0.4s ease-out 0s;
     transition: all 0.4s ease-out 0s;
-    background: linear-gradient(to right, #b43627 0%, #c63b2a 50%, #b43627 100%);
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
     border-radius: 40px;
 }
 
@@ -682,8 +683,10 @@ textarea::placeholder {
 }
 
 .responsive-table th {
-    background-color: #f2f2f2;
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
     font-weight: bold;
+    color: white;
 }
 
 .action-btn {

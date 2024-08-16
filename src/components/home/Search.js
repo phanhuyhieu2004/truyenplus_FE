@@ -23,7 +23,7 @@ function Seacrh() {
         const searchTerm = queryParams.get('searchTerm');
         console.log(searchTerm);
         if (searchTerm) {
-            axios.get(`https://poetic-heart-production.up.railway.app/api/stories/search?searchTerm=${searchTerm}`)
+            axios.get(`http://localhost:8080/api/stories/search?searchTerm=${searchTerm}`)
                 .then(response => {
                     setResults(response.data);
                     setLoading(false);
@@ -65,8 +65,7 @@ function Seacrh() {
 
                                     <div className="daily-update">
                                         <h2 className="title update-title" title="TRUYỆN MỚI CẬP NHẬT">
-                                            <i className="spire spire--list"/>
-                                            KẾT QUẢ TÌM KIẾM
+                                            <i class="fa-solid fa-magnifying-glass"></i> KẾT QUẢ TÌM KIẾM
                                         </h2>
                                     </div>
 
@@ -88,9 +87,10 @@ function Seacrh() {
                                                                     </Link>
                                                                 </h3>
 
-                                                                <Link to={`/story/${story.storyId}`} className="sts sts_1">
+                                                                <Link to={`/story/${story.storyId}`}
+                                                                      className="sts sts_1">
 
-                                                                    {story.totalChapters} Chương
+                                                                    <i className="fa-solid fa-book-open"></i> {story.totalChapters} Chương
                                                                 </Link>
                                                             </div>
                                                         </div>

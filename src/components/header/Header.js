@@ -5,29 +5,22 @@ import { Link, useNavigate } from "react-router-dom";
 
 function Header() {
     const [isActive, setIsActive] = useState(false);
-    const [subMenu, setSubMenu] = useState(null);
-    const [menuTitle, setMenuTitle] = useState('');
     const [categories, setCategories] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
-    const getUser = () => {
-        const user = sessionStorage.getItem('user');
-        return user ? JSON.parse(user) : null;
-    };
 
-    const user = getUser();
+    const user = JSON.parse(localStorage.getItem("user"));
+
     const toggleMenu = () => {
         setIsActive(!isActive);
     };
     const handleLogout = () => {
-        // Xóa thông tin người dùng khỏi sessionStorage
-        sessionStorage.removeItem('user');
-        // Chuyển hướng người dùng về trang đăng nhập
-        navigate('/login');
+        localStorage.removeItem("user");
+        navigate("/login");
     };
 
     useEffect(() => {
-        axios.get('https://poetic-heart-production.up.railway.app/api/categories')
+        axios.get('http://localhost:8080/api/categories')
             .then(response => {
                 setCategories(response.data);
             })
@@ -36,47 +29,9 @@ function Header() {
             });
     }, []);
 
-    const showSubMenu = (hasChildren) => {
-        setSubMenu(hasChildren.querySelector('.menu-subs'));
-        setMenuTitle(hasChildren.querySelector('i').parentNode.childNodes[0].textContent);
-        hasChildren.querySelector('.menu-subs').classList.add('active');
-        hasChildren.querySelector('.menu-subs').style.animation = 'slideLeft 0.5s ease forwards';
-        document.querySelector('.menu-mobile-header').classList.add('active');
-    };
 
-    const hideSubMenu = () => {
-        if (subMenu) {
-            subMenu.style.animation = 'slideRight 0.5s ease forwards';
-            setTimeout(() => {
-                subMenu.classList.remove('active');
-                setSubMenu(null);
-                setMenuTitle('');
-                document.querySelector('.menu-mobile-header').classList.remove('active');
-            }, 300);
-        }
-    };
 
-    const handleClickOutside = (event) => {
-        if (!document.querySelector('.menu').contains(event.target) && !document.querySelector('.menu-mobile-trigger').contains(event.target)) {
-            setIsActive(false);
-        }
-    };
 
-    useEffect(() => {
-        const handleResize = () => {
-            if (window.innerWidth > 991 && isActive) {
-                setIsActive(false);
-            }
-        };
-
-        window.addEventListener('resize', handleResize);
-        document.addEventListener('click', handleClickOutside);
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-            document.removeEventListener('click', handleClickOutside);
-        };
-    }, [isActive]);
 
     const handleSearchChange = (e) => {
         setSearchTerm(e.target.value);
@@ -90,28 +45,7 @@ function Header() {
     return (
         <>
             <header className="header">
-                <div className="container container-header">
-                    <div className="header-top">
-                        <div className="header-search">
-                            <div className="searching">
-                                <form onSubmit={handleSearchSubmit}>
-                                    <input
-                                        id="search"
-                                        autoComplete="off"
-                                        placeholder="Nhập tên hoặc tác giả..."
-                                        name="q"
-                                        value={searchTerm}
-                                        onChange={handleSearchChange}
-                                    />
-                                    <button type="submit">
-                                        <i className="fa fa-search"/>
-                                    </button>
-                                </form>
-                                <div id="div--q"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
                 <div className="container">
                     <div className="wrapper header-wrap">
                         <div className="header-item-left">
@@ -128,23 +62,11 @@ function Header() {
                         <div className="header-item-center">
                             <div className={`overlay ${isActive ? 'active' : ''}`} />
                             <nav className={`menu ${isActive ? 'active' : ''}`} id="menu">
-                                <div className="menu-mobile-header">
-                                    <button type="button" className="menu-mobile-arrow" onClick={hideSubMenu}>
-                                        <i className="fa fa-angle-left"/>
-                                    </button>
-                                    <div className="menu-mobile-title">{menuTitle}</div>
-                                    <button type="button" className="menu-mobile-close" onClick={toggleMenu}>
-                                        <i className="fa fa-close"/>
-                                    </button>
-                                </div>
-                                <ul className="menu-section" onClick={(e) => {
-                                    if (!isActive) return;
-                                    const hasChildren = e.target.closest('.menu-item-has-children');
-                                    if (hasChildren) showSubMenu(hasChildren);
-                                }}>
+                                <ul className="menu-section" >
                                     <li className="menu-item-has-children">
                                         <a href="/home" className="dropdown">
-                                            DANH MỤC <i className="fa fa-angle-down"/>
+                                            <i className="fa-solid fa-list"></i> DANH MỤC <i
+                                            className="fa-solid fa-caret-down"></i>
                                         </a>
                                         <ul className="menu-subs menu-mega menu-column-3">
                                             <li className="menu-item">
@@ -269,8 +191,9 @@ function Header() {
                                         </ul>
                                     </li>
                                     <li className="menu-item-has-children">
-                                        <span  className="dropdown">
-                                            THỂ LOẠI <i className="fa fa-angle-down"/>
+                                        <span className="dropdown">
+                                           <i className="fa-solid fa-list"></i> THỂ LOẠI <i
+                                            className="fa-solid fa-caret-down"></i>
                                         </span>
                                         <ul className="menu-subs menu-mega menu-column-3">
                                             {categories.map((category) => (
@@ -279,24 +202,19 @@ function Header() {
                                             ))}
                                         </ul>
                                     </li>
+
                                     <li className="menu-item-has-children">
-                                        <a href="/home">NGÔN TÌNH</a>
+                                        <a href="/home"><i class="fa-brands fa-blogger"></i> BLOG </a>
                                     </li>
-                                    <li className="menu-item-has-children">
-                                        <a href="/home">BLOG </a>
-                                    </li>
-                                    <li className="menu-item-has-children">
-                                        <a href="/home">
-                                            NHIỆM VỤ <span className="label-menu">Free</span>
-                                        </a>
-                                    </li>
+
                                     {user ? (<li className="menu-item-has-children">
                                         <span className="dropdown">
-                                            TÀI KHOẢN <i className="fa fa-angle-down"/>
+                                            Xin chào {user.name} <i
+                                            className="fa-solid fa-caret-down"></i>
                                         </span>
                                             <ul className="menu-subs menu-column-1">
 
-                                                <li className="menu-item">
+                                            <li className="menu-item">
                                                     <a href="/list">Danh sách truyện</a>
                                                 </li>
                                                 <li className="menu-item">
@@ -310,27 +228,35 @@ function Header() {
                                                 </li>
                                             </ul>
                                         </li>)
-                                        : ("")
+                                        : (<li className="menu-item-has-children">
+                                            <a className="dropdown" href={"/login"}>
+                                                <i className="fa-solid fa-user"></i> ĐĂNG NHẬP
+                                            </a>
+
+                                        </li>)
                                     }
                                 </ul>
                             </nav>
                         </div>
                         <div className="header-item-right">
-                            <a href="/home" className="menu-icon">
-                                <i className="ion ion-md-search"/>
-                            </a>
-                            <a href="/home" className="menu-icon">
-                                <i className="ion ion-md-heart"/>
-                            </a>
-                            <a href="/home" className="menu-icon">
-                                <i className="ion ion-md-cart"/>
-                            </a>
-                            <button type="button" className="menu-mobile-trigger" onClick={toggleMenu}>
-                            <span/>
-                                <span/>
-                                <span/>
-                                <span/>
-                            </button>
+                            <div className="header-search">
+                                <div className="searching">
+                                    <form onSubmit={handleSearchSubmit}>
+                                        <input
+                                            id="search"
+                                            autoComplete="off"
+                                            placeholder="Nhập tên hoặc tác giả..."
+                                            name="q"
+                                            value={searchTerm}
+                                            onChange={handleSearchChange}
+                                        />
+                                        <button type="submit">
+                                            <i className="fa fa-search"/>
+                                        </button>
+                                    </form>
+                                    <div id="div--q"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -21,7 +21,7 @@ function List() {
     }, []);
 
     const fetchStories = () => {
-        axios.get("https://poetic-heart-production.up.railway.app/api/stories/full")
+        axios.get("http://localhost:8080/api/stories/full")
             .then(response => {
                 setStories(response.data);
             })
@@ -32,7 +32,7 @@ function List() {
 
     const deleteStory = (storyId) => {
         if (window.confirm("Bạn có muốn xoá truyện không?")) {
-            axios.delete(`https://poetic-heart-production.up.railway.app/api/stories/${storyId}`)
+            axios.delete(`http://localhost:8080/api/stories/${storyId}`)
                 .then(() => {
                     setOpen(true);
                     fetchStories();

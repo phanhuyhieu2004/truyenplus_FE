@@ -27,7 +27,7 @@ function Edit() {
     const handleClose = () => setOpen(false);
     useEffect(() => {
         const checkChapter = () => {
-            axios.get(`https://poetic-heart-production.up.railway.app/api/stories/chap/${id}`)
+            axios.get(`http://localhost:8080/api/stories/chap/${id}`)
                 .then(response => {
                     const hasChapters = response.data > 0;
                     setHasChapter(hasChapters);
@@ -42,7 +42,7 @@ function Edit() {
 
     useEffect(() => {
         const fetchStories = () => {
-            axios.get(`https://poetic-heart-production.up.railway.app/api/stories/${id}`)
+            axios.get(`http://localhost:8080/api/stories/${id}`)
                 .then(response => {
                     const {title, author, description, categories, image, status} = response.data;
                     setTitle(title);
@@ -59,7 +59,7 @@ function Edit() {
                     console.error('Lỗi truyện:', error);
                 });
 
-            axios.get('https://poetic-heart-production.up.railway.app/api/categories')
+            axios.get('http://localhost:8080/api/categories')
                 .then(response => {
                     setCategories(response.data);
                     console.log(typeof response.data[0].categoryId)
@@ -176,7 +176,7 @@ function Edit() {
 
         }
         console.log(file);
-        axios.put(`https://poetic-heart-production.up.railway.app/api/stories/${id}`, formData, {
+        axios.put(`http://localhost:8080/api/stories/${id}`, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }

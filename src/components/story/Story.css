@@ -186,6 +186,9 @@
 .book-info-text li.lstbtn{
     margin-bottom:18px;
 }
+.book-info-text li.lstbtn > a > span{
+    color: white;
+}
 .book-info-text li.lstbtn a{
     float: left;
     line-height: 38px;
@@ -200,9 +203,7 @@
 {
     margin-bottom: 20px;
 }
-.book-info-text li.li--genres{
-    font-size:15px;
-}
+
 .book-info-text li span {
     color: #c0392b;
     font-size:0.9em;

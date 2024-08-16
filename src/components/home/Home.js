@@ -23,7 +23,7 @@ function Home() {
     useEffect(() => {
         async function fetchStories() {
             try {
-                const response = await axios.get('https://poetic-heart-production.up.railway.app/api/stories');
+                const response = await axios.get('http://localhost:8080/api/stories');
                 setStories(response.data);
             } catch (error) {
                 console.error('Lỗi khi lấy ra các truyện:', error);
@@ -32,7 +32,7 @@ function Home() {
 
         async function fetchStoriesStatus() {
             try {
-                const response = await axios.get('https://poetic-heart-production.up.railway.app/api/stories/status');
+                const response = await axios.get('http://localhost:8080/api/stories/status');
                 setStoriesStatus(response.data);
             } catch (error) {
                 console.error('Lỗi khi lấy ra các truyện full:', error);
@@ -115,23 +115,23 @@ function Home() {
                                             <div className="listitems">
                                                 {stories.map((story, index) => (
                                                     <div className="item" key={index}>
-                                                        <Link className="cover" to={`/story/${story.storyId}`}>
-                                                            <img src={story.image}
-                                                                 alt={story.title}/>
-                                                            <span/>
-                                                        </Link>
-                                                        <div className="info">
+<div style={{position: 'relative',
+    overflow: 'hidden'}}>                                                        <Link className="cover" to={`/story/${story.storyId}`}>
+    <img src={story.image}
+         alt={story.title}/>
+    <span className="full-label"></span> </Link>
+</div>                                                        <div className="info">
                                                             <h3>
                                                                 <Link to={`/story/${story.storyId}`}>
                                                                     {story.title}
                                                                 </Link>
                                                             </h3>
 
-                                                            <Link to={`/author/${story.author}`} className="sts sts_1">
+                                                        <Link to={`/author/${story.author}`} className="sts sts_1" >
 
-                                                                {story.author}
-                                                            </Link>
-                                                        </div>
+                                                            <i className="fa-solid fa-user"></i> {story.author}
+                                                        </Link>
+                                                    </div>
                                                     </div>
                                                 ))}
                                             </div>
@@ -222,7 +222,7 @@ function Home() {
                                     </div>
                                     {!isExpanded && (
                                         <div className="smore">
-                                            <p title="Xem thêm" className="btn" onClick={handleExpand}>
+                                            <p title="Xem thêm" className="btn" onClick={handleExpand} style={{fontWeight:'900'}}>
                                                 Hiển thị thêm
                                             </p>
                                         </div>

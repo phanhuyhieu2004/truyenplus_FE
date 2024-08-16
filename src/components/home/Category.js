@@ -22,7 +22,7 @@ const {categoryName}=useParams();
 console.log(categoryName)
 
     useEffect(() => {
-        axios.get(`https://poetic-heart-production.up.railway.app/api/stories/category?categoryName=${categoryName}`)
+        axios.get(`http://localhost:8080/api/stories/category?categoryName=${categoryName}`)
             .then(response => {
                 setSearchStories(response.data);
             })
@@ -81,7 +81,7 @@ console.log(categoryName)
 
                                                             <Link to={`/story/${story.storyId}`} className="sts sts_1">
 
-                                                                {story.totalChapters} Chương
+                                                                <i className="fa-solid fa-book-open"></i> {story.totalChapters} Chương
                                                             </Link>
                                                         </div>
                                                     </div>

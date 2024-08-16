@@ -75,7 +75,7 @@ function CreateChap() {
             chapterNumber: chapterNumber
         };
 
-        axios.post(`https://poetic-heart-production.up.railway.app/api/chapters/${storyId}`, chapterData)
+        axios.post(`http://localhost:8080/api/chapters/${storyId}`, chapterData)
             .then(response => {
                 setOpen(true);
                 console.log(response.data);

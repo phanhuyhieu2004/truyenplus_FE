@@ -45,7 +45,7 @@ function EditChap() {
     };
     useEffect(() => {
 
-        axios.get(`https://poetic-heart-production.up.railway.app/api/chapters/${chapterId}`)
+        axios.get(`http://localhost:8080/api/chapters/${chapterId}`)
             .then(response => {
                 const chapterData = response.data;
                 setTitle(chapterData.title);
@@ -84,7 +84,7 @@ function EditChap() {
 
         };
 
-        axios.put(`https://poetic-heart-production.up.railway.app/api/chapters/${chapterId}`, updatedChapterData)
+        axios.put(`http://localhost:8080/api/chapters/${chapterId}`, updatedChapterData)
             .then(response => {
                 setOpen(true);
                 console.log(response.data);
