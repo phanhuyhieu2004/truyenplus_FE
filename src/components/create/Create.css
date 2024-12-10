@@ -7,13 +7,43 @@ textarea:focus,
 select,
 select:hover,
 select:focus {
-    border: 1px solid #ccc;
+
     transition: background-color 5000s ease-in-out 0s;
 }
+.search-date{
+    display: flex;
 
-input::placeholder,
-textarea::placeholder {
-    color: #bbb !important;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+.filter-date{
+    padding: 10px;
+    box-shadow: var(--color_1) 1.95px 1.95px 2.6px;
+    border: none;
+}
+.filter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    gap: 20px;
+}
+.input-filter{
+    border: none;
+    padding: 10px;
+    box-shadow: var(--color_1) 1.95px 1.95px 2.6px;
+
+}
+
+.fa-solid.fa-magnifying-glass{
+    position: absolute;
+    top: 13px;
+    left: 150px;
+}
+.filter-search{
+    position: relative;
 }
 
 .form-wrapper {
@@ -26,8 +56,7 @@ textarea::placeholder {
     margin-top: 40px;
     margin-bottom: 30px;
     text-align: center;
-    font-size: 25px;
-    font-family: tahoma;
+    font-size: 2.5rem;
     line-height: 34px;
     color: #000;
     font-weight: 900;
@@ -51,7 +80,7 @@ textarea::placeholder {
     width: 100%;
     height: 54px;
     line-height: 54px;
-    font-size: 16px;
+    font-size: 1.6rem;
     color: #444c59;
     max-width: 1176px;
     margin: 0 auto;
@@ -68,7 +97,8 @@ textarea::placeholder {
     padding: 0 18px;
     padding: 0;
     text-align: center;
-    font-size: 20px;
+    font-size: 2rem
+;
     font-weight: bold;
     display: block;
 }
@@ -87,7 +117,7 @@ textarea::placeholder {
 }
 
 .wrapper .register-notify {
-    font-size: 13.5px;
+    font-size: 1.35rem;
     font-style: italic;
     color: #7cae20;
     margin: 0 !important;
@@ -97,7 +127,7 @@ textarea::placeholder {
 
 .wrapper .form span.line {
     text-align: center;
-    font-size: 12px;
+    font-size: 1.2rem;
     opacity: .5;
     border-bottom: 1px solid #d1d1d2;
     line-height: .1em;
@@ -115,7 +145,7 @@ textarea::placeholder {
 .wrapper .btn-form {
     color: #fff;
     border-radius: 2px;
-    font-size: 16px;
+    font-size: 1.6rem;
     border: 0;
     cursor: pointer;
     font-weight: bold;
@@ -178,7 +208,7 @@ textarea::placeholder {
 
 .form .form-bar .info-text .fullname span {
     color: #c13b2b;
-    font-size: 20px;
+    font-size: 2rem;
     font-weight: bold;
 }
 
@@ -192,7 +222,7 @@ textarea::placeholder {
     padding: 6px 0;
     font-weight: 500;
     color: #6a6a6a;
-    font-size: 15px;
+    font-size: 1.5rem;
     margin: 5px auto;
     display: block;
     max-width: 224px;
@@ -208,7 +238,7 @@ textarea::placeholder {
 .form .form-bar ul.action li a {
     color: #5a5a6a;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 1.4rem;
     text-transform: uppercase;
 }
 
@@ -240,7 +270,7 @@ textarea::placeholder {
 .form-title > h2,
 .form-title > h1 {
     font-family: 'Roboto Condensed', Tahoma, sans-serif;
-    font-size: 19px;
+    font-size: 1.9rem;
     height: 38px;
     line-height: 40px;
     max-width: 100%;
@@ -295,7 +325,7 @@ textarea::placeholder {
 
 .form-profile .edit-row .col-1 {
 
-    font-size: 15px;
+    font-size: 1.5rem;
     color: #3f4f67;
     padding-top: 18px;
     width: 140px;
@@ -305,9 +335,10 @@ textarea::placeholder {
 }
 
 .form-profile .edit-row .col-2 {
-    font-size: 15px;
+    font-size: 1.5rem;
     color: #3f4f67;
     padding-top: 9px;
+    width: calc(100% - 30px);
 }
 
 .form-profile .edit-row .col-3 {
@@ -316,7 +347,7 @@ textarea::placeholder {
 .btn-add{
     color: #fff;
     margin-bottom: 20px;
-    font-size: 16px;
+    font-size: 1.6rem;
     border: 0;
     cursor: pointer;
     font-weight: bold;
@@ -379,13 +410,13 @@ textarea::placeholder {
     bottom: 30px;
     cursor: pointer;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 1.4rem;
     padding: 6px 0;
 }
 
 .form-profile textarea, .form-profile input[type="text"], .form-profile input[type="number"] {
     padding: 10px;
-    font-size: 15px;
+    font-size: 1.5rem;
     border-radius: 3px;
 }
 
@@ -402,7 +433,8 @@ textarea::placeholder {
     right: 20px;
     top: 18px;
     color: #34c607;
-    font-size: 20px;
+    font-size: 2rem;
+
 }
 .image-upload {
     position: relative;
@@ -485,7 +517,7 @@ textarea::placeholder {
     }
 
     .ui-tabs .ui-tabs-nav li a {
-        font-size: 14px;
+        font-size: 1.4rem;
         padding: 12px 2px;
     }
 }
@@ -497,7 +529,7 @@ textarea::placeholder {
     .btn-add{
         color: #fff;
 
-        font-size: 10px;
+        font-size: 1rem;
         border: 0;
         cursor: pointer;
         font-weight: bold;
@@ -506,8 +538,8 @@ textarea::placeholder {
         text-align: center;
         opacity: 0.9;
         transition: all 0.4s ease-out 0s;
-        background: linear-gradient(to right, #b43627 0%, #c63b2a 50%, #b43627 100%);
-        border-radius: 40px;
+        background-color: #0093E9;
+        background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);        border-radius: 40px;
         margin-bottom: 20px;
     }
     .category-grid {
@@ -515,9 +547,9 @@ textarea::placeholder {
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 16px;
     }
-.pagination{
-    width: 110%;
-}
+    .pagination{
+        width: 110%;
+    }
 
     .hidden-mobile {
         display: none !important;
@@ -706,7 +738,7 @@ textarea::placeholder {
 @media only screen and (max-width: 1024px) {
     .responsive-table th, .responsive-table td {
         padding: 6px;
-        font-size: 14px;
+        font-size: 1.4rem;
     }
 }
 
@@ -721,6 +753,9 @@ textarea::placeholder {
     .responsive-table th, .responsive-table td {
         padding: 4px;
         font-size: 12px;
+    }
+    .filter {
+        flex-direction: column;
     }
 }
 

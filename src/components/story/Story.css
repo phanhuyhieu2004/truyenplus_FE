@@ -6,8 +6,25 @@
     text-align: justify;
     margin-bottom: 10px;
     float: left;
-    font-size: 14px;
+    font-size: 1.5rem;
     margin-top: 10px;
+}
+
+@media(max-width: 768px) {
+    .book-info-pic {
+        float: none !important;
+
+    }
+    .book-info-top {
+        flex-direction: column;
+    }
+    .xem-nhieu-item h3 a, .doc-tiep-item h3 a {
+        width: 100%;
+
+    }
+    .xem-nhieu-item, .doc-tiep-item {
+        display: flex;
+    }
 }
 .new-chap h2 {color: #333;font: 700 12px Tahoma;padding-bottom:5px; }
 .new-chap a {display: block;  padding: 2px 1px 3px; color: red;}
@@ -17,7 +34,7 @@
 #rate_row_cmd {color: #555;line-height: 11px; font-size: 11px; font-style: italic;display:block; padding-left: 92px;}
 #valore {
     display: inline-block;
-    font-size: 15px;
+    font-size: 1.5rem;
 }
 #valore b {
     color: #c03a2a;
@@ -45,7 +62,8 @@
     float: left;
     width: 96%;
     background: rgba(255, 255, 255, 0.8);
-    padding: 2%
+    display: flex;
+    gap: 30px;
 }
 .book-info-pic {
     float: left;
@@ -132,7 +150,7 @@
 }
 .book-info-chapter span {
     float: left;
-    font-size: 14px;
+    font-size: 1.2rem;
     color: #666;
     text-align: left
 }
@@ -142,7 +160,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
 
-    font-size: 13px;
+    font-size: 1.3rem;
 }
 
 .book-info-chapter span {
@@ -157,8 +175,9 @@
     margin-bottom: 5px;
 }
 .book-info-chapter .title-list-chapter span {
-    font: 700 12px Tahoma;
     color: #222;
+    font-size: 1.5rem;
+    font-weight: 700;
 }
 .book-info-binh-luan {
     float: left;
@@ -172,7 +191,7 @@
 .book-info-text li {
     width: calc(100% - 44px);
     line-height: 27px!important;
-    padding-left: 44px;
+
     margin-bottom: 7px
 }
 .book-info-text li:nth-of-type(1) {
@@ -180,11 +199,18 @@
     color: #373737;
 }
 .book-info-text li{
-    font: 300 17px Tahoma;
+    font-size: 1.5rem;
     color: #626262;
+    font-weight: 700;
 }
 .book-info-text li.lstbtn{
+    display: flex;
+    gap: 10px;
     margin-bottom:18px;
+}
+
+.liked {
+    color: red;
 }
 .book-info-text li.lstbtn > a > span{
     color: white;
@@ -193,11 +219,9 @@
     float: left;
     line-height: 38px;
 }
-.book-info-text li.lstbtn a:first-child{
-    margin-right: 18px;
-}
+
 .book-info-text h1{
-    font-size:24px;
+    font-size:2.4rem;
 }
 .book-info-text li:first-child
 {
@@ -205,8 +229,8 @@
 }
 
 .book-info-text li span {
-    color: #c0392b;
-    font-size:0.9em;
+    color:var(--color_1);
+    font-size:1.5rem;
 }
 
 .book-info-text .li_bookmark {
@@ -216,14 +240,15 @@
 .book-info-text .story-alternative {
     font: 400 13px Tahoma;
 }
-.book-info-text {position: relative;padding-bottom: 25px;}
+.book-info-text {
+    position: relative;padding-bottom: 25px;}
 .comments {
     width: 940px;
     background: #FFF;
     margin: 0 auto;
     padding: 10px;
     color: #000;
-    font-size: 12px;
+    font-size: 1.2rem;
     line-height: 18px;
     box-sizing: border-box;
 }
@@ -231,7 +256,7 @@
 #gioithieu {
     font: 400 14px Tahoma;color: #3e3e3e;width: 100%;padding: 10px 2%;background: #FFF;text-align: justify; border-top: 1px dashed #c0392b;margin-bottom: 0px;float: left;overflow: hidden;
 }
-#gioithieu  h2{font-size:15px;}
+#gioithieu  h2{font-size:1.5rem;}
 #gioithieu p{
     margin-bottom:12px;
 }
@@ -244,13 +269,16 @@
 #gioithieu a {
     color: #31a95b!important
 }
-#gioithieu h2 {color: #c0392b;margin: 5px 0 12px;}
+#gioithieu h2 {
+    color: var(--color_1);
+    margin: 5px 0 12px;
+}
 span.show-more {
     cursor: pointer;
     display: block;
     padding: 3px 5px;
     background: #e4e4e4;
-    font-size: 13px;
+    font-size: 1.3rem;
     font-weight: bold;
     color: #5c5c5c;
     text-align: center;
@@ -270,12 +298,15 @@ span.show-more:hover {
     padding: 9px 0px;
     margin: 5px 0px;
     position: relative;
-    font-size: 13.5px;
+    font-size: 1.35rem;
     color: white;
     text-align: center;
     text-shadow: 0 1px 2px rgb(0 0 0 / 25%);
-    background: #31a95b;
-    border-bottom: 2px solid #26904b;
+    background-color: #08AEEA;
+    background-image: linear-gradient(0deg, #08AEEA 0%, #80D0C7 100%);
+
+
+    border:none;
     cursor: pointer;
     border-radius: 3px;
     line-height: 16px;
@@ -286,13 +317,14 @@ span.show-more:hover {
     opacity:0.9;
 }
 .btn_dschuong {
-    background: #b43627;
-    border-bottom: 2px solid #97291c;
+    background-color: #FF9A8B;
+    background-image: linear-gradient(90deg, #FF9A8B 0%, #FF6A88 55%, #FF99AC 100%);
+    border:none
 }
 .doc-tiep-item span{
     color: #000;
     padding: 0px 0px;
-    font-size: 13px;
+    font-size: 1.3rem;
     font-weight: bold;
     margin: 6px 4px 4px;
     border-radius: 13px;
@@ -305,7 +337,7 @@ span.show-more:hover {
 }
 .doc-tiep-item p
 {
-    font-size: 12px;
+    font-size: 1.2rem;
     font-weight: 300;
     line-height: 30px;
     float: right;

@@ -8,12 +8,17 @@ import {Link, useNavigate, useParams} from "react-router-dom";
 import axios from "axios";
 import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.bubble.css'
+
 function Chap() {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const accountId = user.accountId;
+    console.log("id là", accountId);
     const [openEditModal, setOpenEditModal] = useState(false);
     const [openSettingModal, setOpenSettingModal] = useState(false);
     const {chapterId, storyId} = useParams();
     const navigate = useNavigate();
-    const [fontSize, setFontSize] = useState(16);    const [chapters, setChapters] = useState([]);
+    const [fontSize, setFontSize] = useState(16);
+    const [chapters, setChapters] = useState([]);
     const [chapter, setChapter] = useState(null);
     const [backgroundColor, setBackgroundColor] = useState("#ffffff");
     const [color, setColor] = useState("#000000"); // Initial text color
@@ -23,8 +28,95 @@ function Chap() {
         setBackgroundColor(backgroundColor);
         setColor(color);
     };
+    const [comments, setComments] = useState([]);
+    const [newComment, setNewComment] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [editingCommentId, setEditingCommentId] = useState(null);
+    const [editingCommentContent, setEditingCommentContent] = useState("");
+    const fetchComments = async () => {
+        try {
+            const response = await axios.get(`http://localhost:8080/api/comments/chapter/${chapterId}`);
+            console.log("Comments data:", response.data);
+            setComments(response.data);
+        } catch (error) {
+            console.error("Error fetching comments", error);
+        }
+    };
+    useEffect(()=>{
+        fetchComments()
+    },[chapterId])
+    const handleAddComment = async () => {
+        if (!newComment.trim()) {
+            alert("Nội dung bình luận không được để trống");
+            return;
+        }
+        setLoading(true);
+        try {
+            const commentDTO = {
+                accountId: accountId,
+                content: newComment
+            };
+            await axios.post(`http://localhost:8080/api/comments/chapter/${chapterId}/add`, commentDTO);
+            setNewComment("");
+            fetchComments();
+
+
+        } catch (error) {
+            console.error('Lỗi khi thêm bình luận:', error);
+        }
+        setLoading(false);
+    };
+    const handleEditComment = (comment) => {
+        setEditingCommentId(comment.id);
+        setEditingCommentContent(comment.content);
+    };
+
+    const handleUpdateComment = async () => {
+        if (!editingCommentContent.trim()) {
+            alert("Nội dung bình luận không được để trống");
+            return;
+        }
+        try {
+            const commentDTO = {
+                content: editingCommentContent
+            };
+            await axios.put(`http://localhost:8080/api/comments/${editingCommentId}/update`, commentDTO);
+            setEditingCommentId(null);
+            setEditingCommentContent("");
+
+            // Gọi lại API để cập nhật danh sách bình luận
+            const response = await axios.get(`http://localhost:8080/api/comments/chapter/${chapterId}`);
+            setComments(response.data);
+        } catch (error) {
+            console.error('Lỗi khi sửa bình luận:', error);
+        }
+    };
+
+    // Xử lý xóa bình luận
+    const handleDeleteComment = async (commentId) => {
+        const confirmed = window.confirm("Bạn có chắc chắn muốn xóa bình luận này không?");
+        if (!confirmed) return; // Nếu người dùng không đồng ý, không làm gì cả
+
+        try {
+            await axios.delete(`http://localhost:8080/api/comments/${commentId}/delete`);
+            // Cập nhật lại danh sách bình luận sau khi xóa thành công
+            setComments(comments.filter(comment => comment.id !== commentId));
+        } catch (error) {
+            console.error("Lỗi khi xóa bình luận:", error);
+        }
+    };
+
     const modules = {
         toolbar: false,
+    };
+    const [menuOpen, setMenuOpen] = useState(null);
+
+    const toggleMenu = (commentId) => {
+        if (menuOpen === commentId) {
+            setMenuOpen(null); // Đóng menu nếu đã mở
+        } else {
+            setMenuOpen(commentId); // Mở menu của comment cụ thể
+        }
     };
 
     const formats = [
@@ -34,6 +126,26 @@ function Chap() {
         'list', 'bullet', 'indent',
         'link', 'image',
     ];
+
+    useEffect(() => {
+        const recordReading = async () => {
+            const readingDTO = {
+                accountId: accountId,
+                storyId: storyId,
+                chapterId: chapterId
+            };
+
+            try {
+                const response = await axios.post('http://localhost:8080/api/history/read', readingDTO);
+                console.log('Đã ghi nhận lịch sử đọc:', response.data);
+            } catch (error) {
+                console.error('Lỗi khi ghi nhận lịch sử đọc:', error.response?.data || error.message);
+            }
+        };
+
+        recordReading();
+    }, [accountId, storyId, chapterId]);
+
     useEffect(() => {
         const fetchChapterInfo = async () => {
             try {
@@ -88,7 +200,7 @@ function Chap() {
     };
 
     useEffect(() => {
-        window.scrollTo({ top: 0, behavior: 'smooth' }); // Cuộn lên đầu trang khi component được mount hoặc cập nhật
+        window.scrollTo({top: 0, behavior: 'smooth'}); // Cuộn lên đầu trang khi component được mount hoặc cập nhật
     }, [chapterId]);
     useEffect(() => {
         if (chapter) {
@@ -282,6 +394,68 @@ function Chap() {
                     <div className="clearfix"/>
                 </div>
             </div>
+
+            <div className="comment-session">
+                <h3>Bình luận ({comments.length})</h3>
+
+                <div className="post-comment">
+                    {comments.map((comment) => (
+                        <div className="list" key={comment.id}>
+                            <div className="user">
+                                <div className="user-image"><img src="https://cdn-icons-png.flaticon.com/512/9385/9385289.png"/></div>
+                                <div className="user-meta">
+                                    <div className="name">{comment.account.name}</div>
+                                    <div className="day">{comment.createdAt[2]} / {comment.createdAt[1]} / {comment.createdAt[0]}</div>
+                                </div>
+                            </div>
+                            <div className="comment-post">
+                                {editingCommentId === comment.id ? (
+                                    <input
+                                        type="text"
+                                        value={editingCommentContent}
+                                        onChange={(e) => setEditingCommentContent(e.target.value)}
+                                    />
+                                ) : (
+                                    comment.content
+                                )}
+                                {comment.account.accountId === accountId && (
+                                    <div className="comment-options">
+                                        <button className="settings-icon" onClick={() => toggleMenu(comment.id)}>
+                                            <i className="fa-solid fa-gear"></i></button>
+                                        {menuOpen === comment.id && (
+                                            <div className="dropdown-menu">
+                                                {editingCommentId === comment.id ? (
+                                                    <button onClick={handleUpdateComment}>Cập nhật</button>
+                                                ) : (
+                                                    <button onClick={() => handleEditComment(comment)}>Sửa</button>
+                                                )}
+                                                <button onClick={() => handleDeleteComment(comment.id)}>Xóa</button>
+                                            </div>
+                                        )}
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+
+                    ))}
+
+                </div>
+                <div className="comment-box">
+                    <div className="user">
+                        <div className="image"><img src="https://cdn-icons-png.flaticon.com/512/9385/9385289.png"/>
+                        </div>
+                        <div className="name">{user.name}</div>
+                    </div>
+                    <form action="" method="post">
+                        <textarea name="" id="" cols="30" rows="10" value={newComment}
+                                  onChange={(e) => setNewComment(e.target.value)}
+                                  placeholder="Nhập bình luận của bạn..."></textarea>
+                        <button onClick={handleAddComment} disabled={loading} className="comment-submit">
+                            {loading ? 'Đang gửi...' : 'Gửi bình luận'}
+                        </button>
+                    </form>
+                </div>
+            </div>
             <Dialog open={openEditModal} onClose={handleCloseEditModal}>
                 <div id="browse-chapter">
                     <div className="title-list-chapter"><span>Danh sách chương</span>
@@ -333,22 +507,34 @@ function Chap() {
                                 </div>
                             </div>
                             <div className="col-md-6 col-sm-12">
-<span style={{font: '700 12px Tahoma',
+<span style={{
+    font: '700 12px Tahoma',
 
-   }}>
+}}>
     Màu nền chương :
-</span>                                <div className="color-controls">
-                                    <IconButton style={{backgroundImage: ' linear-gradient(to bottom right, red, yellow)', margin: '5px', color: '#ffffff'}}
+</span>
+                                <div className="color-controls">
+                                    <IconButton style={{
+                                       background:'black',
+                                        margin: '5px',
+                                        color: '#ffffff'
+                                    }}
                                                 onClick={() => handleColorChange('black', '#ffffff')}/>
                                     <IconButton style={{backgroundColor: 'pink', margin: '5px', color: '#000000'}}
                                                 onClick={() => handleColorChange('pink', '#000000')}/>
-                                    <IconButton style={{backgroundColor: '#ff0000', margin: '5px', color: '#ffffff'}}
-                                                onClick={() => handleColorChange('#ff0000', '#ffffff')}/>
-                                    <IconButton style={{backgroundColor: '#00ff00', margin: '5px', color: '#000000'}}
-                                                onClick={() => handleColorChange('#00ff00', '#000000')}/>
-                                <IconButton style={{backgroundColor: 'white', margin: '5px', color: '#000000',border: '1px solid black'}}
+                                    <IconButton style={{backgroundColor: '#FBAB7E', margin: '5px', color: '#ffffff'}}
+                                                onClick={() => handleColorChange('#FBAB7E', '#000')}/>
+                                    <IconButton style={{backgroundColor: '#2BD2FF', margin: '5px', color: '#000000'}}
+                                                onClick={() => handleColorChange('#2BD2FF', '#000000')}/>
+                                    <IconButton style={{
+                                        backgroundColor: 'white',
+                                        margin: '5px',
+                                        color: '#000000',
+                                        border: '1px solid black'
+                                    }}
                                                 onClick={() => handleColorChange('white', '#000000')}/>
-                                </div>                            </div>
+                                </div>
+                            </div>
 
 
                         </div>

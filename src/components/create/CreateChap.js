@@ -8,6 +8,7 @@ import ReactQuill from "react-quill";
 
 import 'react-quill/dist/quill.snow.css';
 import striptags from "striptags";
+import Dashboard from "../dashboard/Dashboard";
 
 function CreateChap() {
     const {storyId} = useParams();
@@ -56,15 +57,11 @@ function CreateChap() {
 
 
 
-        const plainTextContent = striptags(content);
         const plainTextContents = striptags(title);
 
-        if (plainTextContent.length < 30|| plainTextContent.length > 7000) {
-            alert("Nội dung phải tối thiểu từ 30 đến tối đa là  7000 ký tự");
-            return;
-        }
-        if (plainTextContents.length < 5 ||plainTextContents.length >50) {
-            alert("Tiêu đề phải tối thiểu từ 5 đến tối đa là  50 ký tự");
+
+        if (plainTextContents.length < 2 ) {
+            alert("Tiêu đề phải tối thiểu từ 2 ký tự đổ lên");
             return;
         }
         const titleData = convertToUppercase(title);
@@ -100,42 +97,7 @@ function CreateChap() {
                         <main className="archive__content" role="main">
                             <div className="form">
                                 <div className="wrapper">
-                                    <div className="form-bar">
-                                        <div className="clearfix">
-                                            <img
-                                                src="https://static-00.iconduck.com/assets.00/cs-cat-admin-icon-512x512-3l4exe6y.png"
-                                                className="avatar" alt="ảnh lỗi"                                            />
-                                            <div className="info-text">
-                                                <div className="fullname">
-                                                    <span>ADMIN</span>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <ul className="action">
-                                            <li>
-                                                {" "}
-                                                <Link to="/home">
-                                                    <i className="fa fa-book-open-reader"></i> Truyện plus
-                                                </Link>{" "}
-                                            </li>
-                                            <li>
-                                                {" "}
-                                                <Link to="/list">
-                                                    <i className="fa fa-bars"/> Danh sách truyện
-                                                </Link>{" "}
-                                            </li>
-                                            <li>
-                                                {" "}
-                                                <Link to="/create">
-                                                    <i className="fa fa-plus"></i> Thêm truyện
-
-                                                </Link>{" "}
-                                            </li>
-
-
-                                        </ul>
-                                    </div>
+                                    <Dashboard></Dashboard>
                                     <div className="form-content">
                                         <div className="form-title">
                                             <h1>Thêm chương</h1>
@@ -183,7 +145,7 @@ function CreateChap() {
                                                                 required
                                                             />
                                                             <p class="register-notify"
-                                                               style={{marginBottom: '0!important'}}>Lưu ý: Tiêu đề phải tối thiểu từ 5 đến tối đa là  50 ký tự.</p>                                                        </div>
+                                                               style={{marginBottom: '0!important'}}>Lưu ý: Tiêu đề phải tối thiểu từ 2 ký tự đổ lên.</p>                                                        </div>
                                                         <div className="col-3"/>
                                                     </div>
 
@@ -198,8 +160,7 @@ function CreateChap() {
                                                                 formats={formats}
 
                                                             />
-                                                            <p className="register-notify"
-                                                               style={{marginBottom: '0!important'}}>Lưu ý: Nội dung phải tối thiểu từ 30 đến tối đa là  7000 ký tự.</p>
+
                                                         </div>
                                                         <div className="col-3"/>
                                                     </div>
@@ -225,7 +186,7 @@ function CreateChap() {
                             </div>
                             <Modal open={open} onClose={handleClose}>
                                 <Stack sx={{width: '100%'}} spacing={2}>
-                                    <Alert variant="filled" severity="success">Thêm chương thành công rồi</Alert>
+                                    <Alert variant="filled" severity="success" style={{fontSize:'1.5rem'}}>Thêm chương thành công rồi</Alert>
                                 </Stack>
                             </Modal>
 

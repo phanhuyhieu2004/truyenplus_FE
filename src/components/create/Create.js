@@ -9,6 +9,7 @@ import ReactQuill from "react-quill";
 
 import 'react-quill/dist/quill.snow.css';
 import striptags from "striptags";
+import Dashboard from "../dashboard/Dashboard";
 
 function Create() {
     const [file, setFile] = useState(null);
@@ -107,13 +108,13 @@ function Create() {
 
         const plainTextContent = striptags(title);
         const plainTextContents = striptags(description);
-        if (plainTextContent.length < 5 || plainTextContent.length > 50) {
-            alert("Tiêu đề phải tối thiểu từ 5 đến tối đa là  50 ký tự");
+        if (plainTextContent.length < 5 ) {
+            alert("Tiêu đề phải tối thiểu từ 2 ký tự đổ lên");
             return;
         }
 
-        if (plainTextContents.length < 30 || plainTextContents.length > 4000) {
-            alert("Mô tả phải tối thiểu  từ 30 đến tối đa là 4000 ký tự");
+        if (plainTextContents.length < 30) {
+            alert("Mô tả phải tối thiểu  từ 30 ký tự đổ lên");
             return;
         }
 
@@ -167,42 +168,7 @@ function Create() {
                         <main className="archive__content" role="main">
                             <div className="form">
                                 <div className="wrapper">
-                                    <div className="form-bar">
-                                        <div className="clearfix">
-                                            <img
-                                                src="https://static-00.iconduck.com/assets.00/cs-cat-admin-icon-512x512-3l4exe6y.png"
-                                                className="avatar" alt="không thể xem anh"                                            />
-                                            <div className="info-text">
-                                                <div className="fullname">
-                                                    <span>ADMIN</span>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <ul className="action">
-                                            <li>
-                                                {" "}
-                                                <Link to="/home">
-                                                    <i className="fa fa-book-open-reader"></i> Truyện plus
-                                                </Link>{" "}
-                                            </li>
-                                            <li>
-                                                {" "}
-                                                <Link to="/list">
-                                                    <i className="fa fa-bars"/> Danh sách truyện
-                                                </Link>{" "}
-                                            </li>
-                                            <li>
-                                                {" "}
-                                                <Link to="/create">
-                                                    <i className="fa fa-plus"></i> Thêm truyện
-
-                                                </Link>{" "}
-                                            </li>
-
-
-                                        </ul>
-                                    </div>
+                                    <Dashboard></Dashboard>
                                     <div className="form-content">
                                         <div className="form-title">
                                             <h1>Thêm truyện</h1>
@@ -274,7 +240,8 @@ function Create() {
                                                             />
                                                             <p class="register-notify"
                                                                style={{marginBottom: '0!important'}}>Lưu ý: Tiêu đề phải
-                                                                tối thiểu từ 5 đến tối đa là 50 ký tự .</p></div>
+                                                                tối thiểu từ 2  ký tự đổ lên.</p>
+                                                        </div>
                                                         <div className="col-3"/>
                                                     </div>
                                                     <div className="edit-row">
@@ -357,7 +324,7 @@ function Create() {
                             </div>
                             <Modal open={open} onClose={handleClose}>
                                 <Stack sx={{width: '100%'}} spacing={2}>
-                                    <Alert variant="filled" severity="success">Thêm truyện thành công rồi</Alert>
+                                    <Alert variant="filled" severity="success" style={{fontSize:'1.5rem'}}>Thêm truyện thành công rồi</Alert>
                                 </Stack>
                             </Modal>
 

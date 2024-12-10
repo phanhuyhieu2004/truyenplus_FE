@@ -1,9 +1,8 @@
-import "./Login.css"
 import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
 
-function Login() {
+function Register() {
     const [statusEye, setStatusEye] = useState(false);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -14,7 +13,7 @@ function Login() {
     }
 
     const handleSubmit = (event) => {
-        event.preventDefault(); // Ngăn chặn form tự động gửi đi và tải lại trang
+        event.preventDefault();
 
 
         if (username.length < 5 || username.length > 15) {
@@ -25,23 +24,19 @@ function Login() {
             alert("Mật khẩu phải tối thiểu từ 5 đến tối đa là  15 ký tự");
             return;
         }
-        axios.post("http://localhost:8080/api/account/login", {
+        axios.post("http://localhost:8080/api/account/register", {
             name: username,
             password: password
         })
             .then(response => {
-                console.log(response.data);
-                const user = response.data;
-                console.log("tài khoản là ", user)
-                if (user) {
-                    // lưu tài khoản vừa đăng nhâập vaào localStrage
-                    localStorage.setItem("user", JSON.stringify(user));
-                    alert("Đăng nhập thành công!");
-                    navigate("/home");
-                } else {
-                    console.error("Dữ liệu người dùng không có trong phản hồi.");
-                }
-            })
+                    console.log(response.data);
+                    alert("Đăng ký thành công!");
+                    navigate("/login");
+
+
+                    setUsername("");
+                    setPassword("")
+                })
 
             .catch(error => {
                 if (error.response && error.response.data && error.response.data.message) {
@@ -55,6 +50,7 @@ function Login() {
     return (
         <>
             <div className="main-body">
+
                 <div className="login-container">
                     <div className="screen">
                         <div className="screen__content">
@@ -74,15 +70,15 @@ function Login() {
                                            onChange={(e) => setPassword(e.target.value)}/>
                                 </div>
                                 <button className="button login__submit">
-                                    <span className="button__text">Đăng nhập ngay</span>
+                                    <span className="button__text">ĐĂNG KÝ NGAY</span>
                                     <i className="button__icon fas fa-chevron-right"></i>
                                 </button>
                             </form>
                             <div className="social-login">
 
-                                <h3>hoặc Đăng ký</h3>
+                                <h3>hoặc Đăng nhập</h3>
                                 <div className="social-icons">
-                                    <a href="/register" className="social-login__icon fa-solid fa-user"></a>
+                                    <a href="/login" className="social-login__icon fa-solid fa-user"></a>
 
                                 </div>
 
@@ -96,10 +92,10 @@ function Login() {
                         </div>
                     </div>
                 </div>
-
             </div>
-        </>
-    )
-}
 
-export default Login;
+            </>
+            )
+            }
+
+            export default Register;

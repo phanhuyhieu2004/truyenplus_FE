@@ -3,12 +3,75 @@ main {
     color: #4E4E4E;
     padding-top: 0px;
     padding-bottom: 0;
-    font-size: 15px;
+    font-size: 1.5rem;
     flex:1
+}
+
+.home-content .item .cover img:hover {
+    transform: scale(1.04);
+
+}
+.main-story{
+    display: flex;
+    justify-content: space-between;
+
+    gap: 20px;
+    padding: 50px;
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .main-story{
+        flex-direction: column;
+
+    }
+}
+@media(max-width: 768px) {
+    .main-story{
+        padding: 20px;
+        flex-direction: column;
+    }
+}
+.loader {
+    width: 44.8px;
+    height: 44.8px;
+    color: #554cb5;
+    position: relative;
+    background: radial-gradient(11.2px,currentColor 94%,#0000);
+}
+
+.loader:before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: radial-gradient(10.08px at bottom right,#0000 94%,currentColor) top    left,
+    radial-gradient(10.08px at bottom left ,#0000 94%,currentColor) top    right,
+    radial-gradient(10.08px at top    right,#0000 94%,currentColor) bottom left,
+    radial-gradient(10.08px at top    left ,#0000 94%,currentColor) bottom right;
+    background-size: 22.4px 22.4px;
+    background-repeat: no-repeat;
+    animation: loader 1.5s infinite cubic-bezier(0.3,1,0,1);
+}
+
+@keyframes loader {
+    33% {
+        inset: -11.2px;
+        transform: rotate(0deg);
+    }
+
+    66% {
+        inset: -11.2px;
+        transform: rotate(90deg);
+    }
+
+    100% {
+        inset: 0;
+        transform: rotate(90deg);
+    }
 }
 .item .full-label {
     background-color: #0093E9;
-    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);    left: -30px;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+    left: -30px;
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
     position: absolute;
@@ -17,18 +80,46 @@ main {
     height: 30px;
     line-height: 30px;
     text-align: center;
-    font-size: 18px;
+    font-size: 1.8rem;
     color: #fff;
     transform-origin: center;
+    -webkit-transform-origin: center;
+}
+.fa-solid.fa-heart.fa-beat{
+    color: hotpink;
+    font-size: 2rem;
+}
+.item .full-label.full {
+
+    left: -30px;
+    background-color: #F4D03F;
+    background-image: linear-gradient(132deg, #F4D03F 0%, #16A085 100%);
+
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    position: absolute;
+    top: -20px;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 1.8rem;
+    color: #fff;
+    transform-origin: center;
+    background-color: #F4D03F;
+    background-image: linear-gradient(132deg, #F4D03F 0%, #16A085 100%);
     -webkit-transform-origin: center;
 }
 .item .full-label::before {
     content: "New";
 }
+.item .full-label.full::before {
+    content: "Full";
+}
 .title {
     padding: 7px 15px 8px 30px;
     font-weight: 600;
-    font-size: 15px;
+    font-size: 1.5rem;
     line-height: 1.4;
     color: #FFF
 }
@@ -63,9 +154,8 @@ main {
 }
 
 .slide-caption h3 a {
-    font-size: 14px;
+    font-size: 1.4rem;
     font-weight: 400;
-    font-family: Tahoma;
     color: #FFF;
     text-align: left;
     width: 100%;
@@ -173,7 +263,7 @@ main {
 }
 
 .list-truyen-item-wrap span.line {
-    font-size: 12px
+    font-size: 1.2rem;
 }
 
 .truyen-list .tag {
@@ -204,7 +294,7 @@ main {
     color: #424242;
     margin-top: 2px;
     text-align: justify;
-    font-size: 13px;
+    font-size: 1.3rem;
     line-height: 15px;
 }
 
@@ -294,7 +384,7 @@ main {
     float: left;
     color: #333;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 1.4rem;
     line-height: 22px;
     transition: all .2s;
     -webkit-transition: all .2s;
@@ -315,7 +405,7 @@ main {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-size: 12.5px;
+    font-size: 1.2rem;
     line-height: 1.3;
     border-radius: 3px;
     margin: 0 auto;
@@ -331,7 +421,7 @@ main {
     overflow: hidden;
     text-overflow: ellipsis;
     display: inline-block;
-    font-size: 13px
+    font-size: 1.3rem;
 }
 
 .itemupdate li:first-child {
@@ -377,13 +467,13 @@ main {
 .itemupdate i {
     float: right;
     color: #999;
-    font-size: 9px;
+    font-size: 1rem;
     margin-top: 2px;
     padding-right: 2px
 }
 
 .itemupdate ul li h3 a {
-    font-size: 14px;
+    font-size: 1.4rem;
     color: #c0392b;
     margin-right: 5px;
     white-space: nowrap;
@@ -435,12 +525,11 @@ main {
 }
 
 .leftCol {
-    margin-right: 90px;    float: left;
+
     width: 716px;
 
     overflow: hidden;
-    margin-bottom: 20px !important;
-    margin-left: 50px;
+
 }
 
 .fullCol:after, .leftCol:after, .middleCol:after, main .wrapper:after {
@@ -452,7 +541,7 @@ main {
 .home-content {
     background: #fefefe;
     width: 100%;
-    padding: 10px 0;
+    padding: 30px 0;
 }
 
 .home-content .listitems {
@@ -469,6 +558,7 @@ main {
     padding-left: 10px;
     padding-right: 10px;
     margin-bottom: 20px;
+    transition: 0.5s;
 }
 
 .home-content .listitems.owl-slide .item {
@@ -477,6 +567,9 @@ main {
 
 .home-content .item .cover {
     position: relative;
+
+        transition: all .3s;
+
 }
 
 .home-content .item .cover img {
@@ -488,8 +581,20 @@ main {
     height: 268px;
     max-width: 100%;
     object-fit: cover;
+    transition: all .3s;
 }
+.fa-solid.fa-star{
+    color: red;
+    font-size: 2rem;
+}
+.hot-label{
+    display: inline-block;
+    position: absolute;
 
+    right: 0;
+    left: 20px;
+    top: -230px;
+}
 .home-content .item .info {
     height: 80px
 }
@@ -500,7 +605,7 @@ main {
     width: 100%;
     display: list-item;
     padding: 2px;
-    font-size: 14.5px;
+    font-size: 1.5rem;
     font-weight: bold;
     display: block;
     word-break: break-word;
@@ -522,10 +627,38 @@ main {
 }
 
 .update-title {
+    background-image: linear-gradient(to right, #25aae1, #4481eb, #04befe, #3f86ed);
+    box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
+    background-size: 300% 100%;
+
+    padding: 7px 15px 8px 2px;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+.main-body{
+
     background-color: #0093E9;
     background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
-    padding: 7px 15px 8px 2px
+
+
 }
+
+.update-title:hover {
+
+    background-position: 100% 0;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.update-title:focus {
+    outline: none;
+}
+
+
 
 .daily-update .update-title {
     padding-left: 10px;
@@ -639,7 +772,7 @@ main {
     margin-right: 5px;
     font-weight: 700;
     color: #666;
-    font-size: 13px;
+    font-size: 1.3rem;
     min-width: 36px;
     text-align: center;
 }

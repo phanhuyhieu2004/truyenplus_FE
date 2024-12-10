@@ -1,4 +1,7 @@
 
+html {
+    font-size: 62.5%;
+}
 
 html,
 body,
@@ -72,9 +75,9 @@ video {
     -webkit-margin-end: 0
 }
 
-::selection {
-    background: #BDC3C7
-}
+/*::selection {*/
+/*    background: #BDC3C7*/
+/*}*/
 
 * {
     -webkit-box-sizing: border-box;
@@ -107,7 +110,7 @@ section {
 }
 body {
 
-    font-size: 15px;
+    font-size: 1.5rem;
     font-family: "Open Sans", sans-serif;
     line-height: 1.7;
     word-wrap: break-word;
@@ -115,7 +118,11 @@ body {
     display: flex;
     flex-direction: column;
 }
-
+.css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+    color: #fff;
+}
 ol,
 ul {
     list-style: none
@@ -185,16 +192,27 @@ a {
     text-decoration: none;
     color: #1e54a1;
 }
-
-a:hover {
-    color: #123b75;
+.title-mobile{
+    color: #fff;
 }
 
-/*icon truyện*/
+/*a:hover {*/
+/*    color: #123b75;*/
+/*}*/
+:root{
+    --color_1:#0093E9;
+    --color_2:#80D0C7;
+    --color_3:#1c8ddb;
+    --color_4:#2099eb;
+    --color_gradient2: #87e7ff;
+
+}
+
+/*irecon truyện*/
 .spire {
     background-image: url(https://truyenplus.vn/theme/images/sprite.png);
     background-repeat: no-repeat;
-    float: left
+
 }
 
 .spire.spire--list {
@@ -210,7 +228,7 @@ a:hover {
 .col-md-12,
 col-sm-6,
 col-sm-12 {
-    float: left
+
 }
 
 .col-md-6 {

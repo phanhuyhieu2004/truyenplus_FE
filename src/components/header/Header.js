@@ -1,19 +1,16 @@
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import "./Header.css";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
 
 function Header() {
-    const [isActive, setIsActive] = useState(false);
     const [categories, setCategories] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
-
+    const location = useLocation();
     const user = JSON.parse(localStorage.getItem("user"));
 
-    const toggleMenu = () => {
-        setIsActive(!isActive);
-    };
+
     const handleLogout = () => {
         localStorage.removeItem("user");
         navigate("/login");
@@ -30,9 +27,6 @@ function Header() {
     }, []);
 
 
-
-
-
     const handleSearchChange = (e) => {
         setSearchTerm(e.target.value);
     };
@@ -42,6 +36,29 @@ function Header() {
         navigate(`/search?searchTerm=${searchTerm}`);
     };
 
+   useEffect(()=>{
+       const searchParams = new URLSearchParams(location.search);
+       const query = searchParams.get('searchTerm');
+       if (query) {
+           setSearchTerm(query);
+       }
+   },[])
+    const [isStoryMenuOpen, setStoryMenuOpen] = useState(false);
+    const [isCategoryMenuOpen, setCategoryMenuOpen] = useState(false);
+    const [isAccountMenuOpen, setAccountMenuOpen] = useState(false);
+    const toggleStoryMenu = (event) => {
+        event.preventDefault();
+        setStoryMenuOpen(!isStoryMenuOpen);
+    };
+    const toggleAccountMenu = (event) => {
+        event.preventDefault();
+        setAccountMenuOpen(!isAccountMenuOpen);
+    }
+    console.log("kd", isCategoryMenuOpen)
+    const toggleCategoryMenu = (event) => {
+        event.preventDefault();
+        setCategoryMenuOpen(!isCategoryMenuOpen);
+    };
     return (
         <>
             <header className="header">
@@ -60,9 +77,8 @@ function Header() {
                             </div>
                         </div>
                         <div className="header-item-center">
-                            <div className={`overlay ${isActive ? 'active' : ''}`} />
-                            <nav className={`menu ${isActive ? 'active' : ''}`} id="menu">
-                                <ul className="menu-section" >
+                            <nav className={`menu`} id="menu">
+                                <ul className="menu-section" id="navbar__list--pc">
                                     <li className="menu-item-has-children">
                                         <a href="/home" className="dropdown">
                                             <i className="fa-solid fa-list"></i> DANH MỤC <i
@@ -70,124 +86,22 @@ function Header() {
                                         </a>
                                         <ul className="menu-subs menu-mega menu-column-3">
                                             <li className="menu-item">
-                                                <a
-                                                    href="/home"
-                                                    title="Danh sách Truyện Full"
-                                                >
-                                                    Truyện Full
-                                                </a>
-                                            </li>
+                                                <Link to={`/newStory/`}><i
+                                                    className="fa fa-refresh"></i> Mới Cập Nhật
+                                                </Link></li>
                                             <li className="menu-item">
-                                                <a href="/home" title="Danh sách Truyện Hot">
-                                                    Truyện Hot
-                                                </a>
-                                            </li>
+                                                <Link to={`/fullStory/`}><i className="fa-solid fa-book"></i> Truyện
+                                                    Full
+                                                </Link></li>
                                             <li className="menu-item">
-                                                <a
-                                                    href="/home"
-                                                    title="Danh sách Ngôn Tình Ngắn"
-                                                >
-                                                    Ngôn Tình Ngắn
-                                                </a>
-                                            </li>
+                                                <Link to={`/likes/`}><i className="fa-solid fa-heart"></i> Yêu Thích
+                                                </Link></li>
                                             <li className="menu-item">
-                                                <a
-                                                    href="/home"
-                                                    title="Danh sách Ngôn Tình Hay"
-                                                >
-                                                    Ngôn Tình Hay
-                                                </a>
-                                            </li>
-                                            <li className="menu-item">
-                                                <a
-                                                    href="/home"
-                                                    title="Danh sách Ngôn Tình 18+"
-                                                >
-                                                    Ngôn Tình 18+
-                                                </a>
-                                            </li>
-                                            <li className="menu-item">
-                                                <a
-                                                    href="/home"
-                                                    title="Danh sách Ngôn Tình Hoàn"
-                                                >
-                                                    Ngôn Tình Hoàn
-                                                </a>
-                                            </li>
-                                            <li className="menu-item">
-                                                <a
-                                                    href="/home"
-                                                    title="Danh sách Ngôn Tình Ngược"
-                                                >
-                                                    Ngôn Tình Ngược
-                                                </a>
-                                            </li>
-                                            <li className="menu-item">
-                                                <a
-                                                    href="/home"
-                                                    title="Danh sách Ngôn Tình Sủng"
-                                                >
-                                                    Ngôn Tình Sủng
-                                                </a>
-                                            </li>
-                                            <li className="menu-item">
-                                                <a
-                                                    href="/home"
-                                                    title="Danh sách Ngôn Tình Hài"
-                                                >
-                                                    Ngôn Tình Hài
-                                                </a>
-                                            </li>
-                                            <li className="menu-item">
-                                                <a
-                                                    href="/home"
-                                                    title="Danh sách Ngôn Tình Sắc"
-                                                >
-                                                    Ngôn Tình Sắc
-                                                </a>
-                                            </li>
-                                            <li className="menu-item">
-                                                <a
-                                                    href="/home"
-                                                    title="Danh sách Đam Mỹ Hay"
-                                                >
-                                                    Đam Mỹ Hay
-                                                </a>
-                                            </li>
-                                            <li className="menu-item">
-                                                <a href="/home" title="Danh sách Đam Mỹ Hài">
-                                                    Đam Mỹ Hài
-                                                </a>
-                                            </li>
-                                            <li className="menu-item">
-                                                <a href="/home" title="Danh sách Đam Mỹ H">
-                                                    Đam Mỹ H
-                                                </a>
-                                            </li>
-                                            <li className="menu-item">
-                                                <a
-                                                    href="/home"
-                                                    title="Danh sách Truyện Teen Hay"
-                                                >
-                                                    Truyện Teen Hay
-                                                </a>
-                                            </li>
-                                            <li className="menu-item">
-                                                <a
-                                                    href="/home"
-                                                    title="Danh sách Kiếm Hiệp Hay"
-                                                >
-                                                    Kiếm Hiệp Hay
-                                                </a>
-                                            </li>
-                                            <li className="menu-item">
-                                                <a
-                                                    href="/danh-sach/truyen-tien-hiep-hay"
-                                                    title="Danh sách Tiên Hiệp Hay"
-                                                >
-                                                    Tiên Hiệp Hay
-                                                </a>
-                                            </li>
+                                                <Link to={`/viewsStory/`}><i
+                                                    className="fa fa-eye"></i>  Xem Nhiều
+                                                </Link></li>
+
+
                                         </ul>
                                     </li>
                                     <li className="menu-item-has-children">
@@ -198,7 +112,8 @@ function Header() {
                                         <ul className="menu-subs menu-mega menu-column-3">
                                             {categories.map((category) => (
                                                 <li className="menu-item">
-                                                    <Link to={`/category/${category.categoryName}`}><i class="fa fa-tags"></i> {category.categoryName}
+                                                    <Link to={`/category/${category.categoryName}`}><i
+                                                        class="fa fa-tags"></i> {category.categoryName}
                                                     </Link></li>
                                             ))}
                                         </ul>
@@ -208,34 +123,42 @@ function Header() {
                                         <a href="/home"><i class="fa-brands fa-blogger"></i> BLOG </a>
                                     </li>
 
-                                    {user ? (<li className="menu-item-has-children">
-                                        <span className="dropdown">
-                                            Xin chào {user.name} <i
-                                            className="fa-solid fa-caret-down"></i>
-                                        </span>
+                                    {user ? (
+                                        <li className="menu-item-has-children">
+        <span className="dropdown">
+            Xin chào {user.name} <i className="fa-solid fa-caret-down"></i>
+        </span>
                                             <ul className="menu-subs menu-column-1">
+                                                {user.role !== 1 && (
+                                                    <>
+                                                        <li className="menu-item">
+                                                            <a href="/list"> <i class="fa-solid fa-list-ul"></i> Danh sách truyện</a>
+                                                        </li>
+                                                        <li className="menu-item">
+                                                            <a href="/create"><i class="fa-solid fa-plus"></i> Thêm truyện</a>
+                                                        </li>
+                                                    </>
+                                                )}
+                                                <li className="menu-item">
 
-                                            <li className="menu-item">
-                                                    <a href="/list">Danh sách truyện</a>
+                                                    <a href="/history"> <i className="fa-solid fa-list"> </i> Lịch sử
+                                                        truyện</a>
                                                 </li>
                                                 <li className="menu-item">
-                                                    <a href="/create">Thêm truyện</a>
-                                                </li>
-                                                <li className="menu-item">
-                                                    <button onClick={handleLogout}
-                                                            style={{all: 'unset', cursor: 'pointer'}}>
-                                                        Đăng xuất
-                                                    </button>
+                                                    <a href="#" onClick={handleLogout}><i
+                                                        class="fa-solid fa-right-from-bracket"></i> Đăng
+                                                        xuất</a>
                                                 </li>
                                             </ul>
-                                        </li>)
-                                        : (<li className="menu-item-has-children">
-                                            <a className="dropdown" href={"/login"}>
+                                        </li>
+                                    ) : (
+                                        <li className="menu-item-has-children">
+                                            <a className="dropdown" href="/login">
                                                 <i className="fa-solid fa-user"></i> ĐĂNG NHẬP
                                             </a>
+                                        </li>
+                                    )}
 
-                                        </li>)
-                                    }
                                 </ul>
                             </nav>
                         </div>
@@ -262,6 +185,120 @@ function Header() {
                     </div>
                 </div>
             </header>
+            <div className="mobile-header">
+                <input type="checkbox" name="menu-checkbox" id="menu-checkbox" className="menu-checkbox" hidden/>
+                <label htmlFor="menu-checkbox">
+                    <svg className="menu-header__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                        <path fill="currentColor"
+                              d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+                    </svg>
+                </label>
+                <label htmlFor="menu-checkbox" className="menu-overlay"></label>
+                <div className="menu-drawer">
+                    <div className="menu-drawer__top">
+
+                        <label htmlFor="menu-checkbox">
+                            <svg className="close__menu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                <path fill="currentColor"
+                                      d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c-9.4 9.4-9.4 24.6 0 33.9l47 47-47 47c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l47-47 47 47c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-47-47 47-47c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-47 47-47-47c-9.4-9.4-24.6-9.4-33.9 0z"/>
+                            </svg>
+                        </label>
+                    </div>
+                    <ul id="navbar__list--mobile">
+                        <li className="menu-item-has-children">
+                    <span className="dropdown" onClick={toggleStoryMenu}>
+                        <i className="fa-solid fa-list"></i> DANH MỤC <i className="fa-solid fa-caret-down"></i>
+                    </span>
+                            {isStoryMenuOpen && (
+                                <ul className="menu-subs menu-mega menu-column-3">
+                                    <li className="menu-item">
+                                        <a href={`/newStory/`} className="title-mobile"><i
+                                            className="fa fa-refresh"></i> Mới Cập Nhật
+                                        </a></li>
+                                    <li className="menu-item">
+                                        <a href={`/fullStory/`} className="title-mobile"><i className="fa-solid fa-book"></i> Truyện
+                                            Full
+                                        </a></li>
+                                    <li className="menu-item">
+                                        <a href={`/likes/`} className="title-mobile"><i className="fa-solid fa-heart"></i> Yêu Thích
+                                        </a></li>
+                                    <li className="menu-item">
+                                        <a href={`/viewsStory/`} className="title-mobile"><i
+                                            className="fa fa-eye"></i> Xem Nhiều
+                                        </a></li>
+
+
+                                </ul>
+                            )}
+                        </li>
+
+                        {/* Menu THỂ LOẠI */}
+                        <li className="menu-item-has-children">
+                    <span className="dropdown" onClick={toggleCategoryMenu}>
+                        <i className="fa-solid fa-list"></i> THỂ LOẠI <i className="fa-solid fa-caret-down"></i>
+                    </span>
+                            {isCategoryMenuOpen && (
+                                <ul className="menu-subs menu-mega menu-column-3">
+                                    {categories.map((category) => (
+                                        <li key={category.categoryName} className="menu-item">
+                                            <Link to={`/category/${category.categoryName}`} className={"title-mobile"}><i
+                                                className="fa fa-tags"></i> {category.categoryName}</Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
+                        </li>
+
+                        {/* Menu BLOG */}
+                        <li className="menu-item-has-children">
+                            <a href="/home" className={'title-mobile'}><i className="fa-brands fa-blogger"></i> BLOG </a>
+                        </li>
+
+                        {/* Hiển thị đăng nhập hoặc thông tin người dùng */}
+                        {user ? (
+                            <li className="menu-item-has-children">
+                        <span className="dropdown" onClick={toggleAccountMenu}>
+                            Xin chào {user.name} <i className="fa-solid fa-caret-down"></i>
+                        </span>
+                                {isAccountMenuOpen && (
+                                    <ul className="menu-subs menu-column-1">
+                                        {user.role !== 1 && (
+                                            <>
+                                                <li className="menu-item">
+                                                    <a href="/list" className={'title-mobile'}> <i class="fa-solid fa-list-ul"></i> Danh sách truyện</a>
+                                                </li>
+                                                <li className="menu-item">
+                                                    <a href="/create" className={'title-mobile'}><i class="fa-solid fa-plus"></i> Thêm truyện</a>
+                                                </li>
+                                            </>
+                                        )}
+                                        <li className="menu-item">
+                                            <a href="/history" className={'title-mobile'}><i className="fa-solid fa-list"></i> Lịch sử truyện</a>
+                                        </li>
+                                        <li className="menu-item">
+                                            <a href="#" className={'title-mobile'} onClick={(e) => {
+                                                e.preventDefault();
+                                                console.log("Đăng xuất");
+                                            }}>
+                                                <i className="fa-solid fa-right-from-bracket"></i> Đăng xuất
+                                            </a>
+                                        </li>
+                                    </ul>
+                                )}
+                            </li>
+                        ) : (
+                            <li className="menu-item-has-children">
+                                <a className="dropdown" href="/login">
+                                    <i className="fa-solid fa-user"></i> ĐĂNG NHẬP
+                                </a>
+                            </li>
+                        )}
+
+                    </ul>
+
+                </div>
+
+            </div>
         </>
     );
 }

@@ -3,6 +3,7 @@ import {Link, useParams} from "react-router-dom";
 import {Alert, Modal, Pagination, Stack, Tooltip} from "@mui/material";
 import React, {useCallback, useEffect, useState} from "react";
 import axios from "axios";
+import Dashboard from "../dashboard/Dashboard";
 function ListChap() {
     const {storyId} = useParams();
     const [chapters, setChapters] = useState([]);
@@ -56,44 +57,7 @@ function ListChap() {
                         <main className="archive__content" role="main">
                             <div className="form">
                                 <div className="wrapper">
-                                    <div className="form-bar">
-                                        <div className="clearfix">
-                                            <img
-                                                src="https://static-00.iconduck.com/assets.00/cs-cat-admin-icon-512x512-3l4exe6y.png"
-                                                className="avatar" alt="lỗi"
-                                            />
-                                            <div className="info-text">
-                                                <div className="fullname">
-                                                    <a href="/form">ADMIN</a>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <ul className="action">
-                                            <li>
-                                                {" "}
-                                                <Link to="/home">
-                                                    <i className="fa fa-book-open-reader"></i> Truyện plus
-                                                </Link>{" "}
-                                            </li>
-                                            <li>
-                                                {" "}
-                                                <Link to="/list">
-                                                    <i className="fa fa-bars"/> Danh sách truyện
-                                                </Link>{" "}
-                                            </li>
-
-                                            <li>
-                                                {" "}
-                                                <Link to="/create">
-                                                    <i className="fa fa-plus"></i> Thêm truyện
-
-                                                </Link>{" "}
-                                            </li>
-
-
-                                        </ul>
-                                    </div>
+                                    <Dashboard></Dashboard>
                                     <div className="form-content">
                                         <div className="form-title">
                                             <h1>Danh sách chương </h1>

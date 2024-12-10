@@ -7,9 +7,14 @@ import "../../Mobile.css"
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {Link, useLocation} from "react-router-dom";
-import {CircularProgress} from "@mui/material";
+import {CircularProgress, Pagination} from "@mui/material";
 function Seacrh() {
     const [results, setResults] = useState([]);
+    const [currentPage,setCurrentPage]=useState(1);
+    const [storiesPerPage]=useState(5);
+    const indexOfLastStory=currentPage* storiesPerPage;
+    const indexOfFirstStory=indexOfLastStory-storiesPerPage;
+    const currentStories=results.slice(indexOfFirstStory,indexOfLastStory);
     const location = useLocation();
     const  [loading,setLoading]= useState(false);
     useEffect(()=>{
@@ -38,21 +43,25 @@ function Seacrh() {
 
 
 
+    const handlePageChange = (event, value) => {
+        setCurrentPage(value);
+    };
 
 
 
-    if(loading){
+    if (loading) {
         return (
             <>
                 <main>
-                    <div className='loading-container' style={{margin: '150px 100px',textAlign:'center'}}>
-                        <CircularProgress color="error" size={100} />
+                    <div className='loading-container' style={{margin: '150px 100px', textAlign: 'center'}}>
+                        <CircularProgress size={100}/>
                     </div>
 
                 </main>
             </>
         )
     } else {
+
         return (
             <>
                 <main>
@@ -71,9 +80,9 @@ function Seacrh() {
 
                                     <div id="contentstory">
                                         <div className="home-content">
-                                            {results.length >0 ?(
+                                            {currentStories.length > 0 ? (
                                                 <div className="listitems">
-                                                    {results.map((story, index) => (
+                                                    {currentStories.map((story, index) => (
                                                         <div className="item" key={index}>
                                                             <Link className="cover" to={`/story/${story.storyId}`}>
                                                                 <img src={story.image}
@@ -90,20 +99,28 @@ function Seacrh() {
                                                                 <Link to={`/story/${story.storyId}`}
                                                                       className="sts sts_1">
 
-                                                                    <i className="fa-solid fa-book-open"></i> {story.totalChapters} Chương
+                                                                    <i className="fa-solid fa-book-open"></i> {story.author}
                                                                 </Link>
                                                             </div>
                                                         </div>
                                                     ))}
                                                 </div>
-                                            ): (<p>Không có truyện nào</p>)
+                                            ) : (<p>Không có truyện nào</p>)
                                             }
+                                        </div>
+                                    </div>
+                                    <div className="pagination-container">
+                                        <div className="pagination">
+                                            <Pagination
+                                                count={Math.ceil(results.length / storiesPerPage)}
+                                                page={currentPage}
+                                                onChange={handlePageChange}
+                                            />
                                         </div>
                                     </div>
 
 
                                 </div>
-
 
 
                             </div>
@@ -117,4 +134,5 @@ function Seacrh() {
     }
 
 }
+
 export default Seacrh;

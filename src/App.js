@@ -16,8 +16,13 @@ import Category from "./components/home/Category";
 import Author from "./components/home/Author";
 import Search from "./components/home/Search";
 import Login from "./components/login/Login";
-import BasicExampleDataGridPro from "./components/story/BasicExampleDataGridPro";
 import PrivateRoute from "./PrivateRoute";
+import Register from "./components/register/Register";
+import ReadingHistory from "./components/history/ReadingHistory";
+import NewStory from "./components/home/NewStory";
+import Likes from "./components/home/Likes";
+import ViewStory from "./components/home/ViewStory";
+import FullStory from "./components/home/FullStory";
 
 function App() {
     return (
@@ -39,6 +44,42 @@ function App() {
                         <>
                             <Header />
                             <Home />
+                            <Footer />
+                        </>
+                    }
+                />  <Route
+                    path="/fullStory"
+                    element={
+                        <>
+                            <Header />
+                            <FullStory />
+                            <Footer />
+                        </>
+                    }
+                />  <Route
+                    path="/viewsStory"
+                    element={
+                        <>
+                            <Header />
+                            <ViewStory />
+                            <Footer />
+                        </>
+                    }
+                />  <Route
+                    path="/likes"
+                    element={
+                        <>
+                            <Header />
+                            <Likes />
+                            <Footer />
+                        </>
+                    }
+                /> <Route
+                    path="/newStory"
+                    element={
+                        <>
+                            <Header />
+                            <NewStory />
                             <Footer />
                         </>
                     }
@@ -67,9 +108,16 @@ function App() {
                     path="/login"
                     element={
                         <>
-                            <Header />
+
                             <Login />
-                            <Footer />
+
+                        </>
+                    }
+                /><Route
+                    path="/register"
+                    element={
+                        <>
+                            <Register />
                         </>
                     }
                 />
@@ -134,6 +182,16 @@ function App() {
                         </>
                     }
                 />
+                    <Route
+                        path="/history"
+                        element={
+                            <>
+                                <Header />
+                                <ReadingHistory />
+                                <Footer />
+                            </>
+                        }
+                    />
                 <Route
                     path="/editChapter/:storyId/:chapterId"
                     element={
@@ -154,16 +212,7 @@ function App() {
                         </>
                     }
                 />
-                <Route
-                    path="/table"
-                    element={
-                        <>
-                            <Header />
-                            <BasicExampleDataGridPro />
-                            <Footer />
-                        </>
-                    }
-                />
+
                 </Route>
             </Routes>
         </div>
